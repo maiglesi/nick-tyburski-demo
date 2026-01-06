@@ -780,36 +780,6 @@ const SLIDES = [
       },
     ],
   },
-  {
-    id: "ask",
-    type: "slide",
-    content: `
-            <div class="flex flex-col items-center justify-center h-full">
-                <h2 class="deck-title" style="margin-bottom: 8px;">Let's Build the Future.</h2>
-                <div class="deck-stat-huge text-slate-900 mb-4">$2.5M</div>
-                <p class="deck-subtitle mb-12">Pre-Seed Round • Capital Efficient Growth</p>
-                
-                <div class="flex gap-4">
-                    <button class="btn-primary text-lg px-8 py-4 bg-slate-900 hover:bg-slate-800 shadow-lg hover:shadow-xl transition-all" onclick="App.openViewer('https://calendly.com/mauricio-ostia/30min', 'Schedule Partner Meeting')">
-                        Schedule Partner Meeting →
-                    </button>
-                    <button class="btn-primary text-lg px-8 py-4 bg-white text-slate-900 border border-slate-300 hover:bg-slate-50" onclick="App.renderSlide(0)">
-                        Replay Demo ↺
-                    </button>
-                </div>
-            </div>
-        `,
-    cooMessage:
-      "We are ready to scale. The technology is proven. The team is executing. Join us.",
-    agents: [
-      {
-        name: "Calendar Agent",
-        status: "ready",
-        statusText: "Calendar Open",
-        model: "gpt",
-      },
-    ],
-  },
 ];
 
 const DELIVERABLE_LIBRARY = {
@@ -1134,6 +1104,9 @@ const EXPERIENCE = {
       subtitle: "Baseline the readiness signals and fiduciary posture.",
       prompt:
         "Choose the diagnostic focus and the swarm will assemble the evidence.",
+      dockTitle: "Decision Queue",
+      dockSubtitle: "Choose the diagnostic focus to run now.",
+      statusLabel: "DIAGNOSTIC",
       introMessage:
         "We will start with the exit readiness scan and the fiduciary baseline.",
       decisions: [
@@ -1142,6 +1115,12 @@ const EXPERIENCE = {
           label: "Exit readiness scorecard",
           description:
             "Score transferable value, vendor exposure, and operational gaps.",
+          badge: "Diagnostic",
+          metrics: [
+            { label: "Readiness", value: "78/100", tone: "neutral" },
+            { label: "Vendor risk", value: "Elevated", tone: "negative" },
+            { label: "ETA", value: "90m", tone: "neutral" },
+          ],
           pathLabel: "Exit readiness scorecard",
           duration: 3600,
           coo: {
@@ -1175,6 +1154,12 @@ const EXPERIENCE = {
           label: "Liquidity event timing",
           description:
             "Model liquidity event timing, tax drag, and cash runway.",
+          badge: "Forecast",
+          metrics: [
+            { label: "Runway", value: "18 mo", tone: "positive" },
+            { label: "Tax drag", value: "3.2%", tone: "negative" },
+            { label: "Scenarios", value: "5", tone: "neutral" },
+          ],
           pathLabel: "Liquidity event timing",
           duration: 3800,
           coo: {
@@ -1209,6 +1194,12 @@ const EXPERIENCE = {
           label: "Fiduciary portfolio audit",
           description:
             "Align risk-adjusted return targets with fiduciary standard.",
+          badge: "Fiduciary",
+          metrics: [
+            { label: "IPS fit", value: "On track", tone: "positive" },
+            { label: "Risk band", value: "Moderate", tone: "neutral" },
+            { label: "Audit", value: "Ready", tone: "positive" },
+          ],
           pathLabel: "Fiduciary portfolio audit",
           duration: 3400,
           coo: {
@@ -1246,6 +1237,9 @@ const EXPERIENCE = {
       subtitle: "Turn findings into a value acceleration plan.",
       prompt:
         "Choose the path and we will package the transferable value sprint.",
+      dockTitle: "Value Build",
+      dockSubtitle: "Select the sprint to package transferable value.",
+      statusLabel: "BUILD",
       introMessage:
         "Let's translate readiness into the transferable value roadmap.",
       decisions: [
@@ -1254,6 +1248,12 @@ const EXPERIENCE = {
           label: "Transferable value roadmap",
           description:
             "Sequence the highest ROI initiatives before a liquidity event.",
+          badge: "Sprint",
+          metrics: [
+            { label: "Value lift", value: "+12%", tone: "positive" },
+            { label: "ROI", value: "3.1x", tone: "positive" },
+            { label: "Timeline", value: "8 wks", tone: "neutral" },
+          ],
           pathLabel: "Transferable value plan",
           duration: 3600,
           coo: {
@@ -1286,6 +1286,12 @@ const EXPERIENCE = {
           label: "Vendor community risk scan",
           description:
             "Audit concentration risk inside the vendor community.",
+          badge: "Risk",
+          metrics: [
+            { label: "Concentration", value: "34%", tone: "negative" },
+            { label: "Exposure", value: "$2.1M", tone: "neutral" },
+            { label: "Mitigation", value: "Planned", tone: "positive" },
+          ],
           pathLabel: "Vendor community risk",
           duration: 3200,
           coo: {
@@ -1318,6 +1324,12 @@ const EXPERIENCE = {
           label: "Succession alignment",
           description:
             "Prepare the succession and stakeholder alignment plan.",
+          badge: "Alignment",
+          metrics: [
+            { label: "Stakeholders", value: "6", tone: "neutral" },
+            { label: "Cadence", value: "Monthly", tone: "positive" },
+            { label: "Tax items", value: "3", tone: "negative" },
+          ],
           pathLabel: "Succession alignment",
           duration: 3400,
           coo: {
@@ -1352,6 +1364,9 @@ const EXPERIENCE = {
       title: "Layer 3: Liquidity Event Execution",
       subtitle: "Build the structure and governance for the event.",
       prompt: "Choose the execution path to package deliverables.",
+      dockTitle: "Execution Choices",
+      dockSubtitle: "Pick the deliverable set to structure the event.",
+      statusLabel: "EXECUTION",
       introMessage:
         "Now we move into liquidity event execution and governance.",
       decisions: [
@@ -1360,6 +1375,12 @@ const EXPERIENCE = {
           label: "Deal structure scenarios",
           description:
             "Model structure options and after-tax proceeds.",
+          badge: "Structure",
+          metrics: [
+            { label: "Scenarios", value: "4", tone: "neutral" },
+            { label: "After-tax", value: "87%", tone: "positive" },
+            { label: "Close", value: "Q3", tone: "neutral" },
+          ],
           pathLabel: "Liquidity structure",
           duration: 3600,
           coo: {
@@ -1392,6 +1413,12 @@ const EXPERIENCE = {
           label: "Balance sheet cleanup",
           description:
             "Prepare working capital and audit readiness.",
+          badge: "Cleanup",
+          metrics: [
+            { label: "Working cap", value: "+$1.8M", tone: "positive" },
+            { label: "Audit", value: "30d", tone: "neutral" },
+            { label: "Priority", value: "High", tone: "negative" },
+          ],
           pathLabel: "Balance sheet cleanup",
           duration: 3200,
           coo: {
@@ -1424,6 +1451,12 @@ const EXPERIENCE = {
           label: "Fiduciary governance pack",
           description:
             "Package fiduciary notes for ongoing oversight.",
+          badge: "Governance",
+          metrics: [
+            { label: "Oversight", value: "Quarterly", tone: "positive" },
+            { label: "Compliance", value: "AIF", tone: "neutral" },
+            { label: "Docs", value: "Ready", tone: "positive" },
+          ],
           pathLabel: "Fiduciary governance",
           duration: 3400,
           coo: {
@@ -1458,6 +1491,9 @@ const EXPERIENCE = {
       title: "Layer 4: Legacy + Decumulation",
       subtitle: "Align legacy planning with tax-efficient drawdown.",
       prompt: "Choose the legacy focus to assemble materials.",
+      dockTitle: "Legacy Decisions",
+      dockSubtitle: "Select the legacy focus to assemble next.",
+      statusLabel: "LEGACY",
       introMessage:
         "Let's align legacy planning with the decumulation strategy.",
       decisions: [
@@ -1466,6 +1502,12 @@ const EXPERIENCE = {
           label: "Tax-efficient decumulation",
           description:
             "Sequence withdrawals for optimal after-tax outcomes.",
+          badge: "Decumulation",
+          metrics: [
+            { label: "After-tax", value: "+4.2%", tone: "positive" },
+            { label: "Drawdown", value: "18 yrs", tone: "neutral" },
+            { label: "IRA mix", value: "Balanced", tone: "neutral" },
+          ],
           pathLabel: "Tax-efficient decumulation",
           duration: 3400,
           coo: {
@@ -1498,6 +1540,12 @@ const EXPERIENCE = {
           label: "Legacy planning brief",
           description:
             "Prepare legacy planning and family objectives.",
+          badge: "Legacy",
+          metrics: [
+            { label: "Family goals", value: "Captured", tone: "positive" },
+            { label: "Trusts", value: "3", tone: "neutral" },
+            { label: "Review", value: "2 hrs", tone: "neutral" },
+          ],
           pathLabel: "Legacy planning",
           duration: 3200,
           coo: {
@@ -1530,6 +1578,12 @@ const EXPERIENCE = {
           label: "Family governance cadence",
           description:
             "Set the cadence for multi-generational reviews.",
+          badge: "Governance",
+          metrics: [
+            { label: "Cadence", value: "Quarterly", tone: "positive" },
+            { label: "Attendees", value: "12", tone: "neutral" },
+            { label: "Coverage", value: "Full", tone: "positive" },
+          ],
           pathLabel: "Family governance cadence",
           duration: 3200,
           coo: {
@@ -1564,6 +1618,9 @@ const EXPERIENCE = {
       title: "Layer 5: Client Operating Cadence",
       subtitle: "Lock the recurring COO support workflow.",
       prompt: "Pick the cadence focus and we will publish the system.",
+      dockTitle: "Cadence Decisions",
+      dockSubtitle: "Lock the recurring fiduciary workflow.",
+      statusLabel: "CADENCE",
       introMessage:
         "We will close with the ongoing cadence and monitoring.",
       decisions: [
@@ -1572,6 +1629,12 @@ const EXPERIENCE = {
           label: "Quarterly review cadence",
           description:
             "Refresh quarterly review packs and fiduciary notes.",
+          badge: "Cadence",
+          metrics: [
+            { label: "Review pack", value: "Ready", tone: "positive" },
+            { label: "Risk notes", value: "Updated", tone: "positive" },
+            { label: "ETA", value: "2 hrs", tone: "neutral" },
+          ],
           pathLabel: "Quarterly review cadence",
           duration: 3000,
           coo: {
@@ -1604,6 +1667,12 @@ const EXPERIENCE = {
           label: "Advisor COO workflow",
           description:
             "Run the ongoing task and meeting system for clients.",
+          badge: "Workflow",
+          metrics: [
+            { label: "Tasks", value: "42", tone: "neutral" },
+            { label: "Prep", value: "Auto", tone: "positive" },
+            { label: "Cycle", value: "Weekly", tone: "neutral" },
+          ],
           pathLabel: "Advisor COO workflow",
           duration: 3000,
           coo: {
@@ -1636,6 +1705,12 @@ const EXPERIENCE = {
           label: "Risk-adjusted return monitoring",
           description:
             "Monitor risk-adjusted return and liquidity buffers.",
+          badge: "Monitoring",
+          metrics: [
+            { label: "Volatility", value: "-12%", tone: "positive" },
+            { label: "Liquidity", value: "Strong", tone: "positive" },
+            { label: "Alerts", value: "2", tone: "neutral" },
+          ],
           pathLabel: "Risk-adjusted monitoring",
           duration: 3000,
           coo: {

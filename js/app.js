@@ -7,9 +7,10 @@ const CANVAS_GAP = 24;
 const CANVAS_ROW_HEIGHT = 340;
 const CANVAS_TWO_COLUMN_MIN_WIDTH = 980;
 const CANVAS_MIN_COLUMN_WIDTH = 320;
-const CANVAS_DOCK_HEIGHT = 220;
-const CANVAS_DOCK_OFFSET = 24;
+const CANVAS_DOCK_HEIGHT = 0;
+const CANVAS_DOCK_OFFSET = 0;
 const DEFAULT_WINDOW_SIZE = { width: 420, height: 260 };
+const EXPERIENCE_LOADING_DELAY = 5000;
 
 const App = {
   currentSlideIndex: 0,
@@ -155,13 +156,18 @@ const App = {
     });
   },
 
-  queueMessage: (text, append = false) => {
-    if (!text) return;
+  queueMessage: (message, append = false) => {
+    if (!message) return;
+    const payload =
+      typeof message === "string"
+        ? { text: message }
+        : message;
+    if (!payload.text) return;
     if (append) {
-      App.chatQueue.push(text);
+      App.chatQueue.push(payload);
     } else {
       // Clear previous queue if user skipped ahead fast
-      App.chatQueue = [text];
+      App.chatQueue = [payload];
     }
     if (!App.isTyping) {
       App.processChatQueue();
@@ -175,7 +181,8 @@ const App = {
     }
 
     App.isTyping = true;
-    const text = App.chatQueue.shift();
+    const entry = App.chatQueue.shift();
+    const text = entry.text;
 
     // Create bubble structure
     const container = document.getElementById("chat-container");
@@ -192,6 +199,9 @@ const App = {
 
     // Typewriter effect
     await App.typeText(bubble, text);
+    if (entry.afterRender) {
+      entry.afterRender(bubble, wrapper);
+    }
 
     App.processChatQueue();
   },
@@ -244,6 +254,7 @@ const App = {
   startExperience: () => {
     if (typeof EXPERIENCE === "undefined") return;
     App.mode = "experience";
+    App.clearExperienceTimers();
     App.experienceState = {
       currentLayerIndex: 0,
       path: [],
@@ -263,10 +274,31 @@ const App = {
       cursorPositions: {},
     };
     document.body.classList.add("experience-active");
-    App.renderExperienceLayer(0);
-    if (EXPERIENCE.introMessage) {
-      App.queueMessage(EXPERIENCE.introMessage, true);
-    }
+    App.renderExperienceLoading();
+    App.setExperienceTimer(() => {
+      App.renderExperienceLayer(0);
+      if (EXPERIENCE.introMessage) {
+        App.queueMessage(EXPERIENCE.introMessage, true);
+      }
+    }, EXPERIENCE_LOADING_DELAY);
+  },
+
+  renderExperienceLoading: () => {
+    const stage = document.getElementById("canvas-stage");
+    if (!stage) return;
+    stage.innerHTML = `
+            <div class="experience-stage experience-loading">
+                <div class="loading-text">Preparing personalized demo for ${INVESTOR_PROFILE.name}</div>
+            </div>
+        `;
+
+    const loadingAgents = (EXPERIENCE.idleAgents || []).map((agent, index) => ({
+      ...agent,
+      status: "working",
+      progress: 45 + index * 15,
+      statusText: "Synthesizing demo context",
+    }));
+    App.updateAgents(loadingAgents);
   },
 
   renderExperienceLayer: (index) => {
@@ -301,25 +333,14 @@ const App = {
                     <div class="layer-prompt">${layer.prompt}</div>
                 </div>
 
-                <div class="experience-path" id="experience-path"></div>
-
                 <div class="experience-workspace">
                     <div class="experience-canvas" id="experience-canvas">
                         <div class="canvas-content" id="canvas-content"></div>
-                        <div class="decision-dock" id="decision-dock">
-                            <div class="decision-header">
-                                <div class="decision-title">Decision ${index + 1} of ${EXPERIENCE.layers.length}</div>
-                                <div class="decision-status" id="decision-status">Awaiting your decision.</div>
-                            </div>
-                            <div class="decision-options" id="decision-options"></div>
-                            <div class="decision-actions" id="decision-actions"></div>
-                        </div>
                     </div>
                 </div>
             </div>
         `;
 
-    App.renderDecisionOptions(layer);
     App.renderExperiencePath();
     App.renderCanvasWindows();
     App.renderActivityLog();
@@ -330,10 +351,36 @@ const App = {
     if (layer.introMessage) {
       App.queueMessage(layer.introMessage, true);
     }
+    if (layer.decisions && layer.decisions.length) {
+      App.queueDecisionPrompt(layer);
+    }
   },
 
   renderExperiencePath: () => {
     const pathEl = document.getElementById("experience-path");
+    const historyEl = document.getElementById("decision-history");
+
+    if (historyEl) {
+      if (App.experienceState.path.length === 0) {
+        historyEl.classList.add("empty");
+        historyEl.innerHTML = "";
+      } else {
+        historyEl.classList.remove("empty");
+        historyEl.innerHTML = `
+                <div class="decision-history-label">Recent Decisions</div>
+                <div class="decision-history-chips">
+                    ${App.experienceState.path
+                      .slice(-3)
+                      .map(
+                        (item, index) =>
+                          `<span class="decision-history-chip">${item}</span>`
+                      )
+                      .join("")}
+                </div>
+            `;
+      }
+    }
+
     if (!pathEl) return;
 
     if (App.experienceState.path.length === 0) {
@@ -363,23 +410,67 @@ const App = {
         `;
   },
 
-  renderDecisionOptions: (layer) => {
-    const optionsEl = document.getElementById("decision-options");
-    if (!optionsEl) return;
+  queueDecisionPrompt: (layer) => {
+    const subtitle = layer.subtitle ? `${layer.subtitle} ` : "";
+    const prompt = layer.prompt ? `${layer.prompt} ` : "";
+    const promptText = `${subtitle}${prompt}Which option should I run?`;
+    App.queueMessage(
+      {
+        text: promptText,
+        afterRender: (bubble, wrapper) => {
+          App.renderDecisionPrompt(wrapper, layer);
+        },
+      },
+      true
+    );
+  },
 
-    optionsEl.innerHTML = layer.decisions
-      .map(
-        (decision) => `
-            <button class="decision-option" data-layer="${App.experienceState.currentLayerIndex}" data-decision="${decision.id}">
-                <div class="decision-label">${decision.label}</div>
-                <div class="decision-desc">${decision.description}</div>
-            </button>
-        `
-      )
-      .join("");
+  renderDecisionPrompt: (wrapper, layer) => {
+    const promptEl = document.createElement("div");
+    promptEl.className = "chat-decision";
+    const layerIndex = App.experienceState.currentLayerIndex;
+    const headerLabel = layer.dockTitle || "Decision Options";
 
-    optionsEl
-      .querySelectorAll(".decision-option")
+    promptEl.innerHTML = `
+            <div class="chat-decision-header">${headerLabel}</div>
+            <div class="chat-decision-options">
+                ${layer.decisions
+                  .map((decision) => {
+                    const badge = decision.badge
+                      ? `<span class="chat-decision-badge">${decision.badge}</span>`
+                      : "";
+                    const metrics =
+                      decision.metrics && decision.metrics.length
+                        ? `
+                        <div class="chat-decision-metrics">
+                            ${decision.metrics
+                              .map(
+                                (metric) => `
+                                <span class="chat-decision-metric metric-${metric.tone || "neutral"}">${metric.label}: ${metric.value}</span>
+                            `
+                              )
+                              .join("")}
+                        </div>
+                    `
+                        : "";
+                    return `
+                        <button class="chat-decision-option" data-layer="${layerIndex}" data-decision="${decision.id}">
+                            <div class="chat-decision-title-row">
+                                <div class="chat-decision-title">${decision.label}</div>
+                                ${badge}
+                            </div>
+                            <div class="chat-decision-desc">${decision.description}</div>
+                            ${metrics}
+                        </button>
+                    `;
+                  })
+                  .join("")}
+            </div>
+        `;
+
+    wrapper.appendChild(promptEl);
+    promptEl
+      .querySelectorAll(".chat-decision-option")
       .forEach((button) =>
         button.addEventListener("click", App.handleDecisionClick)
       );
@@ -403,7 +494,7 @@ const App = {
     App.experienceState.path.push(decision.pathLabel || decision.label);
     App.renderExperiencePath();
     App.setDecisionState(decisionId);
-    App.updateDecisionStatus("Agents working...");
+    App.disableDecisionButtons();
     App.addUserMessage(`Run: ${decision.label}`);
 
     if (decision.coo && decision.coo.start) {
@@ -421,12 +512,11 @@ const App = {
     App.animateCursors(deliverables, duration);
 
     App.setExperienceTimer(() => {
-      App.updateDecisionStatus("Deliverables ready.");
-      App.showDecisionActions();
       App.experienceState.isRunning = false;
       if (decision.coo && decision.coo.complete) {
         App.queueMessage(decision.coo.complete, true);
       }
+      App.queueNextLayerPrompt();
     }, duration);
   },
 
@@ -549,8 +639,46 @@ const App = {
     if (!windows.length) {
       canvasFrame.style.minHeight = `${CANVAS_DOCK_HEIGHT + 520}px`;
       canvas.innerHTML = `
-                <div class="canvas-empty">
-                    Choose a decision to generate deliverables.
+                <div class="canvas-placeholder">
+                    <div class="artifact-card canvas-placeholder-main">
+                        <div class="artifact-header">
+                            <div class="artifact-title-group">
+                                <span class="artifact-title">Fiduciary Briefing</span>
+                                <span class="artifact-badge">LIVE</span>
+                            </div>
+                        </div>
+                        <div class="artifact-body">
+                            <div class="artifact-section-title">Key Signals</div>
+                            <ul class="artifact-list">
+                                <li><span class="artifact-bullet"></span>Exit readiness score: 78/100</li>
+                                <li><span class="artifact-bullet"></span>Liquidity window: 18 months</li>
+                                <li><span class="artifact-bullet"></span>Vendor concentration: Elevated</li>
+                                <li><span class="artifact-bullet"></span>Fiduciary posture: On track</li>
+                            </ul>
+                            <div class="artifact-section-title">Priority Focus</div>
+                            <ul class="artifact-list">
+                                <li><span class="artifact-bullet"></span>Transferable value roadmap</li>
+                                <li><span class="artifact-bullet"></span>Tax-efficient decumulation</li>
+                                <li><span class="artifact-bullet"></span>Quarterly review cadence</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="artifact-card canvas-placeholder-side">
+                        <div class="artifact-header">
+                            <div class="artifact-title-group">
+                                <span class="artifact-title">Signal Feed</span>
+                                <span class="artifact-badge">LIVE</span>
+                            </div>
+                        </div>
+                        <div class="artifact-body">
+                            <div class="signal-list">
+                                <div class="signal-pill">Liquidity model queued</div>
+                                <div class="signal-pill">Vendor risk review pending</div>
+                                <div class="signal-pill">Fiduciary audit ready</div>
+                                <div class="signal-pill">Legacy brief draftable</div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             `;
       return;
@@ -827,20 +955,18 @@ const App = {
   },
 
   setDecisionState: (decisionId) => {
-    const buttons = document.querySelectorAll(".decision-option");
+    const buttons = document.querySelectorAll(".chat-decision-option");
     buttons.forEach((button) => {
       const isSelected = button.dataset.decision === decisionId;
       button.classList.toggle("selected", isSelected);
-      button.classList.toggle("disabled", !isSelected);
-      button.disabled = !isSelected;
     });
   },
 
-  updateDecisionStatus: (text) => {
-    const statusEl = document.getElementById("decision-status");
-    if (statusEl) {
-      statusEl.textContent = text;
-    }
+  disableDecisionButtons: () => {
+    document.querySelectorAll(".chat-decision-option").forEach((button) => {
+      button.disabled = true;
+      button.classList.add("disabled");
+    });
   },
 
   runAgentSequence: (decision) => {
@@ -867,22 +993,33 @@ const App = {
     });
   },
 
-  showDecisionActions: () => {
-    const actionsEl = document.getElementById("decision-actions");
-    if (!actionsEl) return;
-
+  queueNextLayerPrompt: () => {
     const nextIndex = App.experienceState.currentLayerIndex + 1;
     const isLast = nextIndex >= EXPERIENCE.layers.length;
-    if (isLast) {
-      actionsEl.innerHTML = `
-                <button class="decision-cta" data-action="restart">Restart Experience</button>
-            `;
-    } else {
-      actionsEl.innerHTML = `
-                <button class="decision-cta" data-action="next">Continue to ${EXPERIENCE.layers[nextIndex].title}</button>
-            `;
-    }
+    const nextLayer = EXPERIENCE.layers[nextIndex];
+    const message = isLast
+      ? "Want to run another path? I can restart the experience."
+      : `Ready to move to ${nextLayer.title}? ${nextLayer.subtitle} I can take you there when you're ready.`;
 
+    App.queueMessage(
+      {
+        text: message,
+        afterRender: (bubble, wrapper) => {
+          App.renderNextLayerActions(wrapper, nextIndex, isLast);
+        },
+      },
+      true
+    );
+  },
+
+  renderNextLayerActions: (wrapper, nextIndex, isLast) => {
+    const actionsEl = document.createElement("div");
+    actionsEl.className = "chat-action-buttons";
+    actionsEl.innerHTML = isLast
+      ? `<button class="chat-action-button" data-action="restart">Restart experience</button>`
+      : `<button class="chat-action-button" data-action="next">Continue to ${EXPERIENCE.layers[nextIndex].title}</button>`;
+
+    wrapper.appendChild(actionsEl);
     actionsEl
       .querySelectorAll("button")
       .forEach((button) =>

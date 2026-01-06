@@ -1,0 +1,769 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Megan Putney Analysis - E. & J. Gallo Winery</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-page: #FAFAF8;
+            --bg-surface: #FFFFFF;
+            --text-primary: #1C1B1A;
+            --text-secondary: #5C5A56;
+            --accent: #3B82F6;
+            --border: #E5E7EB;
+            --font-sans: 'Inter', sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+        }
+
+        body {
+            font-family: var(--font-sans);
+            background: var(--bg-page);
+            color: var(--text-primary);
+            line-height: 1.6;
+            margin: 0;
+            padding: 40px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: var(--bg-surface);
+            padding: 60px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            border: 1px solid var(--border);
+        }
+
+        /* HEADER */
+        .meta-header {
+            background: #F8FAFC;
+            padding: 20px;
+            border-radius: 6px;
+            margin-bottom: 40px;
+            border: 1px solid var(--border);
+            font-size: 0.9em;
+            color: var(--text-secondary);
+        }
+        .meta-row { display: flex; justify-content: space-between; margin-bottom: 8px; }
+        .meta-label { font-weight: 600; text-transform: uppercase; font-size: 0.75em; letter-spacing: 0.05em; color: #94A3B8; }
+        .meta-value { color: var(--text-primary); font-weight: 500; }
+        .badge { 
+            background: #DCFCE7; color: #166534; 
+            padding: 2px 8px; border-radius: 4px; 
+            font-family: var(--font-mono); font-size: 0.75em; 
+            text-transform: uppercase; border: 1px solid #BBF7D0;
+        }
+
+        /* TYPOGRAPHY */
+        h1 { font-size: 2.5em; letter-spacing: -0.03em; margin-bottom: 0.5em; border-bottom: 2px solid var(--border); padding-bottom: 20px; }
+        h2 { font-size: 1.5em; margin-top: 2em; margin-bottom: 1em; color: #111827; border-left: 4px solid var(--accent); padding-left: 16px; }
+        h3 { font-size: 1.1em; margin-top: 1.5em; color: #374151; }
+        p { margin-bottom: 1em; color: #4B5563; }
+        
+        /* TABLES */
+        table { width: 100%; border-collapse: collapse; margin: 20px 0; font-size: 0.9em; }
+        th, td { padding: 12px; border-bottom: 1px solid var(--border); text-align: left; vertical-align: top; }
+        th { color: var(--text-secondary); font-weight: 600; text-transform: uppercase; font-size: 0.75em; letter-spacing: 0.05em; background-color: #F9FAFB; }
+        td { color: var(--text-primary); }
+        tr:last-child td { border-bottom: none; }
+
+        /* LISTS */
+        ul, ol { padding-left: 20px; margin-bottom: 1em; }
+        li { margin-bottom: 6px; color: #4B5563; }
+        
+        /* BOXES */
+        .box-highlight {
+            background: #EFF6FF;
+            border: 1px solid #DBEAFE;
+            padding: 24px;
+            border-radius: 8px;
+            margin: 24px 0;
+        }
+        .box-quote {
+            font-style: italic;
+            border-left: 4px solid var(--accent);
+            padding: 10px 20px;
+            background: #F9FAFB;
+            margin: 24px 0;
+            color: #4B5563;
+        }
+        
+        /* CODE/PRE */
+        pre {
+            background: #F1F5F9;
+            padding: 16px;
+            border-radius: 6px;
+            overflow-x: auto;
+            font-family: var(--font-mono);
+            font-size: 0.8em;
+            color: #334155;
+            border: 1px solid var(--border);
+        }
+
+        /* TOC */
+        .toc {
+            background: #FAFAFA;
+            padding: 20px;
+            border-radius: 8px;
+            border: 1px solid var(--border);
+            margin-bottom: 40px;
+        }
+        .toc-title { font-weight: 600; margin-bottom: 10px; font-size: 0.9em; text-transform: uppercase; color: var(--text-secondary); }
+        .toc ul { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+        .toc li { font-size: 0.9em; margin: 0; }
+        .toc a { text-decoration: none; color: var(--accent); }
+        .toc a:hover { text-decoration: underline; }
+
+        /* LINKS */
+        a { color: var(--accent); text-decoration: none; }
+        a:hover { text-decoration: underline; }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        
+        <div class="meta-header">
+            <div class="meta-row">
+                <div>
+                    <div class="meta-label">Subject</div>
+                    <div class="meta-value">Megan Putney, MBA</div>
+                </div>
+                <div>
+                    <div class="meta-label">Target Organization</div>
+                    <div class="meta-value">E. & J. Gallo Winery</div>
+                </div>
+                <div>
+                    <div class="meta-label">Status</div>
+                    <div class="badge">Sales Intelligence Dossier</div>
+                </div>
+            </div>
+            <div style="margin-top:16px; padding-top:16px; border-top:1px solid #E2E8F0; display:flex; justify-content:space-between;">
+                <div>
+                    <div class="meta-label">Generated By</div>
+                    <div class="meta-value" style="font-family:var(--font-mono); font-size:0.9em;">MyCOO Research Agent (Gemini-2.5-Flash)</div>
+                </div>
+                <div>
+                    <div class="meta-label">Date</div>
+                    <div class="meta-value">December 17, 2025</div>
+                </div>
+            </div>
+        </div>
+
+        <h1>Megan Putney at E. & J. Gallo Winery</h1>
+        <p style="font-size: 1.1em; color: var(--text-secondary);">Complete Research & MyCOO Positioning Strategy</p>
+
+        <div class="toc">
+            <div class="toc-title">Table of Contents</div>
+            <ul>
+                <li><a href="#executive-summary">1. Executive Summary</a></li>
+                <li><a href="#megan-putney-profile">2. Megan Putney Profile</a></li>
+                <li><a href="#career-history">3. Career History</a></li>
+                <li><a href="#key-accomplishments">4. Key Accomplishments</a></li>
+                <li><a href="#core-expertise-skills">5. Core Expertise & Skills</a></li>
+                <li><a href="#what-she-values">6. What She Values</a></li>
+                <li><a href="#speaking-thought-leadership">7. Speaking & Thought Leadership</a></li>
+                <li><a href="#gallo-company-culture-values">9. Gallo Company Culture & Values</a></li>
+                <li><a href="#gallo-strategic-initiatives">10. Gallo Strategic Initiatives</a></li>
+                <li><a href="#gallo-digital-transformation">11. Gallo Digital Transformation</a></li>
+                <li><a href="#gallo-leadership-structure">12. Gallo Leadership Structure</a></li>
+                <li><a href="#category-management-at-gallo">13. Category Management at Gallo</a></li>
+                <li><a href="#roles-shes-likely-hiring">14. Roles She's Likely Hiring</a></li>
+                <li><a href="#category-management-pain-points">15. Category Management Pain Points</a></li>
+                <li><a href="#ai-in-category-management">16. AI in Category Management</a></li>
+                <li><a href="#mycoo-value-proposition">17. MyCOO Value Proposition</a></li>
+                <li><a href="#positioning-strategy">18. Positioning Strategy</a></li>
+                <li><a href="#objection-handling">19. Objection Handling</a></li>
+                <li><a href="#conversation-guide">20. Conversation Guide</a></li>
+                <li><a href="#meeting-agenda">21. Meeting Agenda</a></li>
+                <li><a href="#sources">22. Sources</a></li>
+                <li><a href="#appendix">23. Appendix: Quick Reference</a></li>
+            </ul>
+        </div>
+
+        <h2 id="executive-summary">1. Executive Summary</h2>
+        <div class="box-highlight">
+            <p><strong>Megan Putney</strong> is a highly accomplished Category Development Director and Analytics Leader with over a decade of experience in CPG/beverage category insights, shopper analytics, and data visualization. She recently joined <strong>E. & J. Gallo Winery</strong> (the world's largest family-owned winery) in a category/insights leadership role.</p>
+            
+            <p><strong>Key Facts:</strong></p>
+            <ul>
+                <li>Won <strong>Walmart Distributor of the Year</strong> at Mike's Hard Lemonade</li>
+                <li><strong>Doubled sales in 2 years</strong> at Mike's Hard in a struggling category</li>
+                <li><strong>Tableau expert</strong> - leads Northwest Arkansas Tableau User Group</li>
+                <li><strong>Founded Nsquared Insights</strong> consultancy</li>
+                <li><strong>MBA from University of Arkansas</strong> (Walton College - #1 retail program)</li>
+                <li>Based in <strong>Rogers, Arkansas</strong> (Walmart vendor hub)</li>
+            </ul>
+
+            <p><strong>MyCOO Opportunity:</strong><br>
+            She is likely hiring Category Insights Managers and Analysts at Gallo. MyCOO can position as an AI-powered alternative that:</p>
+            <ul>
+                <li>Does the data "heavy lifting" so her team focuses on strategy</li>
+                <li>Costs less than hiring 2-3 analysts but works 24/7</li>
+                <li>Helps her team win awards like Walmart Distributor of the Year at Gallo</li>
+                <li>Scales insights across Gallo's 130+ brands and 500+ distributors</li>
+            </ul>
+        </div>
+
+        <h2 id="megan-putney-profile">2. Megan Putney Profile</h2>
+        <h3>Summary Table</h3>
+        <table>
+            <tr><th width="30%">Full Name</th><td>Megan Putney, MBA</td></tr>
+            <tr><th>Current Role</th><td>Category Development/Insights Leadership at E. & J. Gallo Winery</td></tr>
+            <tr><th>Previous Role</th><td>Category Development Director at Mondelēz International</td></tr>
+            <tr><th>Notable Role</th><td>Senior Manager, Category Insights at Mike's Hard Lemonade</td></tr>
+            <tr><th>Education</th><td>MBA, University of Arkansas - Sam M. Walton College of Business</td></tr>
+            <tr><th>Location</th><td>Rogers, Arkansas (Northwest Arkansas - Walmart vendor hub)</td></tr>
+            <tr><th>LinkedIn Connections</th><td>500+</td></tr>
+            <tr><th>Specialization</th><td>Category insights, analytics, Tableau, consumer research</td></tr>
+            <tr><th>Industry Focus</th><td>CPG, Beverage Alcohol, Mass Retail (Walmart, Kroger, Club)</td></tr>
+        </table>
+
+        <h3>Professional Identity</h3>
+        <p>Megan Putney combines deep expertise in category management with advanced analytics capabilities. She has successfully led teams that won prestigious retail awards and has a proven track record of driving significant sales growth through data-driven insights.</p>
+        <p>Her unique strength is having "sat in every seat at the table" - sales, marketing, buyer, and market research - allowing her to quickly understand business needs and translate them into actionable insights.</p>
+        
+        <h3>Consultancy</h3>
+        <p><strong>Nsquared Insights</strong> (Founded - Recent)</p>
+        <ul>
+            <li>Founder & Principal Consultant</li>
+            <li>Focus on delivering impactful consumer and market insights</li>
+            <li>LinkedIn announcement: "Exciting News! I'm thrilled to announce the launch of Nsquared Insights—my own consultancy focused on delivering impactful consumer and market insights"</li>
+        </ul>
+
+        <h2 id="career-history">3. Career History</h2>
+        <h3>Career Timeline</h3>
+        <pre>
+┌─────────────────────────────────────────────────────────────────┐
+│                                                                 │
+│  Danone                                                         │
+│  └── Category Insights (Walmart/Kroger/Corporate teams)         │
+│                           │                                     │
+│                           ▼                                     │
+│  Abbott                                                         │
+│  └── Analytics Manager                                          │
+│                           │                                     │
+│                           ▼                                     │
+│  Mike's Hard Lemonade                                           │
+│  └── Sr. Manager, Category Insights (Mass/Club/Emerging)        │
+│  └── ★ Won WALMART DISTRIBUTOR OF THE YEAR                      │
+│  └── ★ Doubled sales in 2 years                                 │
+│                           │                                     │
+│                           ▼                                     │
+│  Mondelēz International                                         │
+│  └── Category Development Director                              │
+│                           │                                     │
+│                           ▼                                     │
+│  Nsquared Insights                                              │
+│  └── Founder & Principal Consultant                             │
+│                           │                                     │
+│                           ▼                                     │
+│  E. & J. Gallo Winery (CURRENT)                                 │
+│  └── Category/Insights Leadership Role                          │
+│                                                                 │
+└─────────────────────────────────────────────────────────────────┘
+        </pre>
+
+        <h3>Detailed Career History</h3>
+        
+        <h4>E. & J. Gallo Winery (Current - 2024/2025)</h4>
+        <ul>
+            <li><strong>Role:</strong> Category Development/Insights Leadership (exact title to be confirmed)</li>
+            <li><strong>Transition:</strong> Major move from flavored malt beverages/snacks to wine/spirits industry</li>
+            <li><strong>Likely Focus:</strong> Building category insights capabilities for Gallo's 130+ brand portfolio</li>
+        </ul>
+
+        <h4>Nsquared Insights (Founded - Recent)</h4>
+        <ul>
+            <li><strong>Role:</strong> Founder & Principal Consultant</li>
+            <li><strong>Focus:</strong> Consumer and market insights delivery</li>
+            <li><strong>Significance:</strong> Demonstrates entrepreneurial spirit and business acumen</li>
+        </ul>
+
+        <h4>Mondelēz International</h4>
+        <ul>
+            <li><strong>Role:</strong> Category Development Director</li>
+            <li><strong>Location:</strong> Rogers, Arkansas (Northwest Arkansas - Walmart vendor hub)</li>
+            <li><strong>Company:</strong> Global snacking powerhouse</li>
+            <li><strong>Focus:</strong> Category strategy for major retailers</li>
+        </ul>
+
+        <h4>Mike's Hard Lemonade</h4>
+        <ul>
+            <li><strong>Role:</strong> Senior Manager, Category Insights (Mass/Club/Emerging Channels)</li>
+            <li><strong>Major Achievement:</strong> Led team that won <strong>WALMART DISTRIBUTOR OF THE YEAR</strong> award</li>
+            <li><strong>Expertise:</strong> Championed consumer research to understand "today's evolving Flavor consumer"</li>
+            <li><strong>Impact:</strong> Drove strategies and sales growth at major retailers</li>
+            <li><strong>Results:</strong> Mike's became fastest growing Top 10 beer supplier for 3 years; doubled sales within 2 years in a struggling category</li>
+        </ul>
+
+        <h4>Abbott</h4>
+        <ul>
+            <li><strong>Role:</strong> Analytics Manager</li>
+            <li><strong>Focus:</strong> Healthcare analytics - career transition from beverage to healthcare</li>
+        </ul>
+
+        <h4>Danone</h4>
+        <ul>
+            <li><strong>Roles:</strong> Various Category Insights roles (Walmart, Kroger, Corporate teams)</li>
+            <li><strong>Significance:</strong> Built foundational category insights expertise at major CPG company</li>
+        </ul>
+
+        <h2 id="key-accomplishments">4. Key Accomplishments</h2>
+        <h3>Achievement Summary Table</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Achievement</th>
+                    <th>Company</th>
+                    <th>Significance</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Walmart Distributor of the Year</strong></td>
+                    <td>Mike's Hard Lemonade</td>
+                    <td>One of Walmart's highest supplier honors - proves she delivers results</td>
+                </tr>
+                <tr>
+                    <td><strong>Doubled sales in 2 years</strong></td>
+                    <td>Mike's Hard Lemonade</td>
+                    <td>In a struggling category - demonstrates transformational impact</td>
+                </tr>
+                <tr>
+                    <td><strong>Fastest growing Top 10 beer supplier (3 years)</strong></td>
+                    <td>Mike's Hard Lemonade</td>
+                    <td>Sustained excellence, not one-time success</td>
+                </tr>
+                <tr>
+                    <td><strong>Founded Nsquared Insights</strong></td>
+                    <td>Own consultancy</td>
+                    <td>Entrepreneurial, understands business value of insights</td>
+                </tr>
+                <tr>
+                    <td><strong>Tableau User Group Leader</strong></td>
+                    <td>NW Arkansas</td>
+                    <td>Thought leader in analytics community, not just practitioner</td>
+                </tr>
+                <tr>
+                    <td><strong>Digital Food & Beverage Speaker</strong></td>
+                    <td>Industry conference</td>
+                    <td>Industry visibility and credibility</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3>Walmart Distributor of the Year - Deep Dive</h3>
+        <p>The Walmart Distributor of the Year award is one of Walmart's most prestigious supplier recognitions. Winning this award demonstrates:</p>
+        <ol>
+            <li><strong>Exceptional Performance:</strong> Consistently exceeding retailer expectations</li>
+            <li><strong>Strong Relationships:</strong> Deep partnership with Walmart buying and merchandising teams</li>
+            <li><strong>Data Excellence:</strong> Superior use of data and insights to drive category growth</li>
+            <li><strong>Execution:</strong> Flawless in-store execution and promotional effectiveness</li>
+            <li><strong>Innovation:</strong> Bringing new ideas and products that resonate with Walmart shoppers</li>
+        </ol>
+        <p>Megan's team winning this award at Mike's Hard Lemonade is a significant credential that she will likely want to replicate at Gallo.</p>
+
+        <h2 id="core-expertise-skills">5. Core Expertise & Skills</h2>
+
+        <h3>1. Category Management & Insights</h3>
+        <ul>
+            <li><strong>Category Captain experience</strong> with cross-functional expertise</li>
+            <li>Retail planning, merchandising, buying background</li>
+            <li>"Takes time to dig into the excess data available and find the opportunities for the category, retailer, and/or brand"</li>
+            <li>Does analytical "heavy lifting" so clients can create strategies</li>
+            <li>Deep understanding of three-tier distribution system (supplier → distributor → retailer)</li>
+        </ul>
+
+        <h3>2. Analytics & Data Visualization</h3>
+        <ul>
+            <li><strong>Tableau Expert:</strong> Recognized as "Up and Rising Tableau Expert" (Super Data Science Podcast, 2016)</li>
+            <li><strong>Leadership:</strong> Leads Northwest Arkansas Tableau User Group</li>
+            <li><strong>Passion:</strong> Visualizing data to make insights accessible</li>
+            <li><strong>Self-taught:</strong> Through online learning path - demonstrates continuous learning mindset</li>
+            <li><strong>Tools:</strong> Tableau, Power BI, Excel (advanced), syndicated data platforms</li>
+        </ul>
+
+        <h3>3. Consumer & Market Research</h3>
+        <table>
+            <tr><th width="30%">Research Type</th><td>Capabilities</td></tr>
+            <tr><th>Quantitative</th><td>Custom survey design, statistical analysis</td></tr>
+            <tr><th>Qualitative</th><td>Online/in-person moderation, deep consumer understanding</td></tr>
+            <tr><th>Hybrid</th><td>Combines quantitative and qualitative approaches</td></tr>
+            <tr><th>Data Sources</th><td>Syndicated data (Nielsen, IRI), POS data, primary research, category/shopper data</td></tr>
+        </table>
+
+        <h3>4. Strategic Translation</h3>
+        <ul>
+            <li><strong>Unique strength:</strong> "Sat in every seat at the table (sales, marketing, buyer, market research)"</li>
+            <li>Quickly understands real business needs and translates them into project objectives</li>
+            <li>Delivers relevant insights and actionable recommendations</li>
+            <li>Bridges gap between data and strategy</li>
+        </ul>
+
+        <h3>5. Industry Expertise</h3>
+        <table>
+            <tr><th width="30%">Industry</th><td>Experience</td></tr>
+            <tr><th>Beverage/Alcohol</th><td>Deep expertise in flavored malt beverages, hard lemonade category evolution</td></tr>
+            <tr><th>Mass Retail</th><td>Walmart, Kroger, club channels (Sam's Club, Costco)</td></tr>
+            <tr><th>CPG/Snacks</th><td>Mondelēz, Danone experience</td></tr>
+            <tr><th>Healthcare</th><td>Abbott analytics background</td></tr>
+            <tr><th>Brand Building</th><td>Launching new brands and bringing fresh products to market</td></tr>
+        </table>
+
+        <h2 id="what-she-values">6. What She Values</h2>
+        <h3>Values Analysis Table</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Value</th>
+                    <th>Evidence</th>
+                    <th>Implications for MyCOO</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Team Success</strong></td>
+                    <td>"So grateful to have a team that works hard all year" - celebrates team wins publicly</td>
+                    <td>Position MyCOO as force multiplier for her team, not replacement</td>
+                </tr>
+                <tr>
+                    <td><strong>Actionable Insights</strong></td>
+                    <td>"Does the heavy lifting so clients can create strategies"</td>
+                    <td>AI agents do data grunt work, her team focuses on strategy</td>
+                </tr>
+                <tr>
+                    <td><strong>Speed to Impact</strong></td>
+                    <td>Doubled sales in 2 years</td>
+                    <td>Faster insights = faster decisions = faster results</td>
+                </tr>
+                <tr>
+                    <td><strong>Continuous Learning</strong></td>
+                    <td>Self-taught Tableau, MBA, User Group leader</td>
+                    <td>Will appreciate AI innovation, not fear it</td>
+                </tr>
+                <tr>
+                    <td><strong>Winning Awards</strong></td>
+                    <td>Walmart Distributor of the Year</td>
+                    <td>MyCOO helps her team win recognition at Gallo</td>
+                </tr>
+                <tr>
+                    <td><strong>Cross-Functional View</strong></td>
+                    <td>"Sat in every seat at the table"</td>
+                    <td>COO model resonates - orchestration across functions</td>
+                </tr>
+                <tr>
+                    <td><strong>Entrepreneurship</strong></td>
+                    <td>Founded own consultancy</td>
+                    <td>Appreciates innovation and business value creation</td>
+                </tr>
+                <tr>
+                    <td><strong>Data Quality</strong></td>
+                    <td>Leads Tableau User Group, speaks on analytics</td>
+                    <td>Will expect high-quality, trustworthy AI outputs</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h2 id="speaking-thought-leadership">7. Speaking & Thought Leadership</h2>
+        <h3>Speaking Engagements</h3>
+        
+        <h4>1. Super Data Science Podcast (Episode 12 - November 2016)</h4>
+        <ul>
+            <li><strong>Host:</strong> Dr. Jon Krohn</li>
+            <li><strong>Topic:</strong> "Online Learning, Tableau Insights, and Ad Hoc Analytics"</li>
+            <li><strong>Topics Discussed:</strong> Online learning path to Tableau mastery, Ad Hoc Analytics approaches, Powerful Tableau insights and techniques.</li>
+        </ul>
+
+        <h4>2. Digital Food & Beverage Conference</h4>
+        <ul>
+            <li>Listed as speaker at industry conference</li>
+            <li>Focus on insights and networking in food & beverage industry</li>
+        </ul>
+
+        <h3>Leadership Positions</h3>
+        <p><strong>Northwest Arkansas Tableau User Group:</strong> Leader/Organizer. Significance: Builds community, shares knowledge, stays current on analytics trends. Network: Connected to analytics professionals across NW Arkansas (major CPG hub).</p>
+
+        <div class="box-quote">
+            <p><strong>Implications for Engagement:</strong></p>
+            <ol>
+                <li>She's a thought leader - Approach her as a peer, not just a buyer.</li>
+                <li>She values education - Offer insights and learning opportunities.</li>
+                <li>She's analytically sophisticated - Don't oversimplify; she'll see through buzzwords.</li>
+                <li>She has industry visibility - A successful engagement could lead to case study/referral.</li>
+            </ol>
+        </div>
+
+        <h2 id="e-j-gallo-winery-overview">8. E. & J. Gallo Winery Overview</h2>
+        <table>
+            <tr><th width="30%">Founded</th><td>1933</td></tr>
+            <tr><th>Headquarters</th><td>Modesto, California</td></tr>
+            <tr><th>Type</th><td>Private, Family-Owned</td></tr>
+            <tr><th>Revenue</th><td>$5+ billion (estimated 2024)</td></tr>
+            <tr><th>Employees</th><td>7,000+ globally</td></tr>
+            <tr><th>Brands</th><td>130+ across wine, spirits, beer, RTD</td></tr>
+            <tr><th>Vineyards</th><td>20,000+ acres</td></tr>
+            <tr><th>Distribution</th><td>500+ distributors, 110+ countries</td></tr>
+            <tr><th>Recognition</th><td>Glassdoor "Best Places to Work" (6 consecutive years)</td></tr>
+        </table>
+
+        <h3>Brand Portfolio</h3>
+        <ul>
+            <li><strong>Wine Brands:</strong> Barefoot Wine (largest wine brand in US), Apothic, Orin Swift, Rombauer, J Vineyards, Louis M. Martini, William Hill, Prophecy, Dark Horse.</li>
+            <li><strong>Spirits Brands:</strong> High Noon (hard seltzer phenomenon), Ron del Barrilito, New Amsterdam Vodka, E&J Brandy.</li>
+            <li><strong>Recent Additions:</strong> Beer category entry (Montucky Cold Snacks partnership), Strategic acquisitions.</li>
+        </ul>
+
+        <h2 id="gallo-company-culture-values">9. Gallo Company Culture & Values</h2>
+        <h3>Six Core Values</h3>
+        <table>
+            <tr><th width="20%">Value</th><td>Description</td></tr>
+            <tr><th>Integrity</th><td>Honest, straightforward communication and ethical conduct.</td></tr>
+            <tr><th>Respect</th><td>Active listening and valuing diverse perspectives.</td></tr>
+            <tr><th>Humility</th><td>Continuous learning from failures and successes.</td></tr>
+            <tr><th>Innovation</th><td>Big ideas and challenging conventional methods.</td></tr>
+            <tr><th>Commitment</th><td>Delivering personal best every day.</td></tr>
+            <tr><th>Teamwork</th><td>Collaboration to achieve optimal results.</td></tr>
+        </table>
+
+        <h2 id="gallo-strategic-initiatives">10. Gallo Strategic Initiatives</h2>
+        <ol>
+            <li><strong>Total Beverage Alcohol Strategy:</strong> Transform from wine company to total beverage alcohol company (Wine, Spirits, Beer, RTDs).</li>
+            <li><strong>Premiumization:</strong> Move portfolio upmarket to higher-margin premium segments (acquiring Orin Swift, Rombauer).</li>
+            <li><strong>Digital Transformation:</strong> Investing in data, AI, and technology (APEX platform, SAP S/4 HANA).</li>
+            <li><strong>Sustainability:</strong> $100M investment, 100% recyclable packaging by 2026.</li>
+            <li><strong>Market Expansion:</strong> Doubling UK on-trade investment, E-commerce and DTC growth.</li>
+        </ol>
+
+        <h2 id="gallo-digital-transformation">11. Gallo Digital Transformation</h2>
+        <h3>Technology Investments (2020-2025)</h3>
+        <table>
+            <thead><tr><th>Platform</th><th>Purpose</th></tr></thead>
+            <tbody>
+                <tr><td>SAP S/4 HANA</td><td>Production Planning</td></tr>
+                <tr><td>AgCode Platform</td><td>Agriculture ERP</td></tr>
+                <tr><td>MicroStrategy ONE</td><td>Analytics</td></tr>
+                <tr><td>Salesforce</td><td>CRM</td></tr>
+                <tr><td>Power BI / Tableau</td><td>Business Intelligence</td></tr>
+                <tr><td>UiPath</td><td>Robotic Process Automation</td></tr>
+            </tbody>
+        </table>
+
+        <h3>Data & Analytics</h3>
+        <ul>
+            <li><strong>500+ TB</strong> of enterprise data</li>
+            <li>Data sources: Vintages, grape varieties, brands, shipping, distributor habits, POS, Nielsen, IRI, social media</li>
+            <li><strong>APEX platform</strong> consolidating all data sources</li>
+        </ul>
+
+        <h2 id="gallo-leadership-structure">12. Gallo Leadership Structure</h2>
+        <h3>Executive Leadership</h3>
+        <table>
+            <tr><th width="30%">Executive</th><th>Role</th></tr>
+            <tr><td>Ernest Gallo</td><td>CEO/President (since 2020)</td></tr>
+            <tr><td>Doug Vilas</td><td>COO</td></tr>
+            <tr><td>Stephanie Gallo</td><td>CMO</td></tr>
+            <tr><td>Matt Gallo</td><td>VP, Gallo Vineyards</td></tr>
+            <tr><td>Mark Sahn</td><td>CFO</td></tr>
+            <tr><td>Sanjay Shringarpure</td><td>CIO</td></tr>
+        </table>
+
+        <h2 id="category-management-at-gallo">13. Category Management at Gallo</h2>
+        <p>Gallo operates a <strong>centralized "Category Management Center of Excellence"</strong> model. It uses a Hub-and-spoke structure where category expertise is centralized and deployed across the distributor network.</p>
+
+        <h3>Tools & Data Sources</h3>
+        <table>
+            <tr><th width="30%">Category</th><td>Tools/Sources</td></tr>
+            <tr><th>BI Platforms</th><td>Power BI (primary), Tableau</td></tr>
+            <tr><th>Syndicated Data</th><td>Nielsen (NielsenIQ), IRI (Circana)</td></tr>
+            <tr><th>Internal</th><td>SAP, Salesforce</td></tr>
+            <tr><th>Wine-Specific</th><td>VIP, KARMA</td></tr>
+        </table>
+
+        <h2 id="roles-shes-likely-hiring">14. Roles She's Likely Hiring</h2>
+        
+        <h3>1. Category Insights Manager</h3>
+        <ul>
+            <li><strong>Location:</strong> Rogers, AR (her location)</li>
+            <li><strong>Salary Range:</strong> $96,000 - $143,000</li>
+            <li><strong>Focus:</strong> Analytics support, data interpretation, strategic insights</li>
+            <li><strong>MyCOO Alternative:</strong> AI agent does 80% of data work automatically</li>
+        </ul>
+
+        <h3>2. Category Analyst</h3>
+        <ul>
+            <li><strong>Salary Range:</strong> $70,000 - $90,000</li>
+            <li><strong>Focus:</strong> Support account managers, Tableau dashboards, distributor tools</li>
+            <li><strong>MyCOO Alternative:</strong> AI generates dashboards and insights on demand</li>
+        </ul>
+
+        <h3>Cost Comparison</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Hiring Option</th>
+                    <th>Annual Cost</th>
+                    <th>Capability</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Hire 2 Category Analysts</strong></td>
+                    <td>$180K-$280K</td>
+                    <td>40 hrs/week each, vacation, turnover risk</td>
+                </tr>
+                <tr>
+                    <td><strong>MyCOO Category Agent</strong></td>
+                    <td>$36K-$60K (est)</td>
+                    <td>24/7, no vacation, scales instantly</td>
+                </tr>
+                <tr>
+                    <td><strong>Savings</strong></td>
+                    <td>$120K-$220K/year</td>
+                    <td>Plus faster insights and scalability</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h2 id="category-management-pain-points">15. Category Management Pain Points</h2>
+        <h3>Daily Pain Points for Category Teams</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Pain Point</th>
+                    <th>Time Consumed Weekly</th>
+                    <th>Impact</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>Pulling Nielsen/IRI data</td><td>10-15 hours</td><td>Delays insights, manual errors</td></tr>
+                <tr><td>Creating retailer reports</td><td>8-12 hours</td><td>Repetitive work, inconsistent formats</td></tr>
+                <tr><td>Building PowerPoints</td><td>5-8 hours</td><td>Time away from strategic work</td></tr>
+                <tr><td>Data cleaning/normalization</td><td>5-10 hours</td><td>Frustrating, error-prone</td></tr>
+                <tr><td>Ad-hoc analysis requests</td><td>10+ hours</td><td>Interrupts planned work</td></tr>
+                <tr><td><strong>TOTAL</strong></td><td><strong>40-60 hours/week</strong></td><td><strong>1-1.5 FTEs of automatable work</strong></td></tr>
+            </tbody>
+        </table>
+
+        <h2 id="ai-in-category-management">16. AI in Category Management</h2>
+        <h3>How AI is Transforming Category Work</h3>
+        <ul>
+            <li><strong>Automated Data Pipeline:</strong> AI connectors pulling from retailer APIs automatically.</li>
+            <li><strong>Predictive Analytics:</strong> ML models forecasting baseline sales and promotional lift.</li>
+            <li><strong>Natural Language Generation:</strong> Auto-generated narrative insights from data.</li>
+            <li><strong>Computer Vision:</strong> Image recognition auditing planogram compliance.</li>
+        </ul>
+
+        <h3>ROI Metrics</h3>
+        <ul>
+            <li><strong>60-80% reduction</strong> in time spent on data preparation</li>
+            <li><strong>15-25 hours saved</strong> per category manager per week</li>
+            <li><strong>5-15% increase</strong> in category sales through better assortment</li>
+        </ul>
+
+        <h2 id="mycoo-value-proposition">17. MyCOO Value Proposition</h2>
+        <div class="box-highlight">
+            <h3 style="margin-top:0; color:var(--accent);">Headline</h3>
+            <p style="font-size:1.2em; font-weight:600;">"Give your team superpowers instead of hiring more bodies"</p>
+            <p>MyCOO gives your category team an AI-powered analyst that handles the data grunt work 24/7 - pulling Nielsen data, generating retailer scorecards, spotting anomalies - so your human talent can focus on winning Walmart Distributor of the Year at Gallo.</p>
+        </div>
+
+        <h3>Three Pillars</h3>
+        <ol>
+            <li><strong>SPEED - Insights in minutes, not days:</strong> "What if your team could answer any retailer question in real-time?"</li>
+            <li><strong>SCALE - Cover more without hiring more:</strong> "Manage 130+ Gallo brands and 500+ distributors without 10x the headcount."</li>
+            <li><strong>IMPACT - Win more awards, drive more growth:</strong> "You won Walmart Distributor of the Year at Mike's. What could you win at Gallo with AI leverage?"</li>
+        </ol>
+
+        <h2 id="positioning-strategy">18. Positioning Strategy</h2>
+        
+        <h3>For Megan Directly (Category Insights Leader)</h3>
+        <div class="box-quote">
+            "Help your team spend less time pulling data and more time winning at retail. MyCOO's AI agents automatically handle the analytical heavy lifting - data pulls, report generation, anomaly detection - so your category experts can focus on the strategic work that wins Distributor of the Year awards."
+        </div>
+
+        <h3>Competitive Differentiation</h3>
+        <ul>
+            <li><strong>vs. Tableau/Power BI:</strong> MyCOO is an AI agent that DOES the work, not just a tool for humans to do work.</li>
+            <li><strong>vs. Hiring:</strong> 5-10x more cost-effective, no ramp time, no turnover.</li>
+            <li><strong>vs. Consulting:</strong> Always-on, learns over time, predictable cost.</li>
+        </ul>
+
+        <h2 id="objection-handling">19. Objection Handling</h2>
+        
+        <h3>"We need human judgment"</h3>
+        <p><strong>Response:</strong> "Absolutely - that's exactly why MyCOO exists. We do the data work so your humans can apply their judgment to what actually matters. Your team's expertise is in interpreting insights and building retailer relationships, not pulling Nielsen data. MyCOO handles the 60-80% of time that's currently spent on data wrangling."</p>
+
+        <h3>"Our data is complex"</h3>
+        <p><strong>Response:</strong> "You have Nielsen, IRI, distributor data, POS, internal sales data - we're built for exactly that multi-source complexity. In fact, the more complex your data environment, the more value MyCOO provides. We've designed specifically for CPG and beverage alcohol's three-tier distribution challenges."</p>
+
+        <h3>"I need to trust the insights"</h3>
+        <p><strong>Response:</strong> "Every insight MyCOO provides shows its reasoning and data sources. Your team validates and approves before anything goes to retailers. Think of it as a brilliant junior analyst who always shows their work - you get the leverage without the risk."</p>
+
+        <h2 id="conversation-guide">20. Conversation Guide</h2>
+        
+        <h3>Opening</h3>
+        <p>"Megan, I saw you led the team that won Walmart Distributor of the Year at Mike's Hard Lemonade - that's an incredible achievement. Congratulations on your move to Gallo. I'm curious what you're building there and how the transition to wine and spirits is going."</p>
+
+        <h3>Value Hook</h3>
+        <p>"What if your analysts could spend 80% of their time on strategic work instead of data wrangling? That's what we're doing at MyCOO - building AI agents that handle the analytical heavy lifting so category teams can focus on winning."</p>
+
+        <h3>MyCOO Introduction</h3>
+        <p>"We've built an AI platform where a single COO agent orchestrates specialist AI agents for category work - pulling syndicated data, generating retailer scorecards, spotting trends and anomalies, creating presentation drafts - so your human team can focus on strategy and relationships."</p>
+
+        <h2 id="meeting-agenda">21. Meeting Agenda</h2>
+        <h3>30-Minute Discovery Call</h3>
+        <table>
+            <tr><th width="20%">Time</th><th>Topic</th><th>Objective</th></tr>
+            <tr><td>0-5 min</td><td>Her priorities at Gallo</td><td>Understand her goals and challenges</td></tr>
+            <tr><td>5-10 min</td><td>Team structure & hiring needs</td><td>Identify specific roles she's filling</td></tr>
+            <tr><td>10-20 min</td><td>Pain points deep dive</td><td>Quantify time spent on automatable work</td></tr>
+            <tr><td>20-25 min</td><td>Quick MyCOO capability overview</td><td>Show relevance to her specific needs</td></tr>
+            <tr><td>25-30 min</td><td>Next steps</td><td>Propose pilot or demo</td></tr>
+        </table>
+
+        <h2 id="sources">22. Sources</h2>
+        <ul>
+            <li><a href="https://www.linkedin.com/in/megan-putney-mba-category-insights-ar/">Megan Putney LinkedIn Profile</a></li>
+            <li><a href="https://foodandbeverage.wbresearch.com/speakers/megan-putney">Digital Food & Beverage Speaker Page</a></li>
+            <li><a href="https://www.gallo.com/company-values">Gallo Company Values</a></li>
+            <li><a href="https://www.cio.com/article/230368/e-j-gallo-deploys-data-driven-app-to-harvest-a-better-grape.html">E&J Gallo Digital Transformation - CIO Interview</a></li>
+        </ul>
+
+        <h2 id="appendix">23. Appendix: Quick Reference Card</h2>
+        <div class="box-highlight">
+            <h3>Megan Putney At-a-Glance</h3>
+            <table>
+                <tr><th width="30%">Item</th><td>Details</td></tr>
+                <tr><th>Name</th><td>Megan Putney, MBA</td></tr>
+                <tr><th>Current</th><td>E. & J. Gallo Winery - Category/Insights Leadership</td></tr>
+                <tr><th>Location</th><td>Rogers, AR</td></tr>
+                <tr><th>Key Win</th><td>Walmart Distributor of the Year (Mike's Hard Lemonade)</td></tr>
+                <tr><th>Superpower</th><td>Tableau expert, data-driven strategist</td></tr>
+                <tr><th>Values</th><td>Team success, actionable insights, continuous learning</td></tr>
+            </table>
+
+            <h3>Key Talking Points</h3>
+            <ol>
+                <li><strong>Reference her achievement:</strong> "Walmart Distributor of the Year at Mike's Hard"</li>
+                <li><strong>Speak her language:</strong> Data, insights, actionable, Tableau, Nielsen/IRI</li>
+                <li><strong>Team-focused:</strong> "Make your team more effective" not "replace your team"</li>
+                <li><strong>Results-oriented:</strong> "Win awards at Gallo like you did at Mike's"</li>
+                <li><strong>Understand complexity:</strong> 130+ brands, 500+ distributors, three-tier distribution</li>
+            </ol>
+
+            <h3>MyCOO Pitch in One Sentence</h3>
+            <div class="box-quote">
+                "MyCOO is like hiring a brilliant category analyst who works 24/7, never takes vacation, and costs less than an intern - handling all the data grunt work so your team can focus on winning."
+            </div>
+        </div>
+
+        <div style="margin-top: 60px; padding-top: 20px; border-top: 1px solid var(--border); font-size: 0.8em; color: var(--text-secondary); text-align: center;">
+            <p>Document prepared December 17, 2025 • For internal sales use only</p>
+        </div>
+
+    </div>
+</body>
+</html>

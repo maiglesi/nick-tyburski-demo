@@ -1,0 +1,838 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hico Construction | Complex Projects. Confident Execution.</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Manrope:wght@500;700;800&display=swap" rel="stylesheet">
+
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* --- Brand Identity --- */
+        :root {
+            --hico-navy: #0F2942;
+            --structural-steel: #64748B;
+            --draft-paper: #FAFAFA;
+            --oxide-copper: #C67C4E;
+            --oxide-copper-hover: #b06b40;
+            --white: #ffffff;
+            --border-color: rgba(100, 116, 139, 0.2);
+        }
+
+        /* --- Reset & Base --- */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--draft-paper);
+            color: var(--hico-navy);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Manrope', sans-serif;
+            color: var(--hico-navy);
+            font-weight: 700;
+            line-height: 1.2;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: all 0.3s ease;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        img {
+            max-width: 100%;
+            display: block;
+        }
+
+        /* --- Utilities --- */
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        .section {
+            padding: 80px 0;
+        }
+
+        .text-center { text-align: center; }
+        .text-copper { color: var(--oxide-copper); }
+        .text-steel { color: var(--structural-steel); }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 14px 32px;
+            font-family: 'Manrope', sans-serif;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border-radius: 0;
+        }
+
+        .btn-primary {
+            background-color: var(--oxide-copper);
+            color: var(--white);
+            border: 1px solid var(--oxide-copper);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--oxide-copper-hover);
+            border-color: var(--oxide-copper-hover);
+            transform: translateY(-2px);
+        }
+
+        .btn-ghost {
+            background-color: transparent;
+            color: var(--white);
+            border: 1px solid var(--white);
+        }
+
+        .btn-ghost:hover {
+            background-color: var(--white);
+            color: var(--hico-navy);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            color: var(--hico-navy);
+            border: 1px solid var(--hico-navy);
+        }
+
+        .btn-outline:hover {
+            background-color: var(--hico-navy);
+            color: var(--white);
+        }
+
+        /* --- Header --- */
+        .header {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background-color: var(--white);
+            border-bottom: 1px solid var(--border-color);
+            padding: 20px 0;
+            transition: padding 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .header.scrolled {
+            padding: 15px 0;
+            box-shadow: 0 4px 20px rgba(15, 41, 66, 0.05);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Manrope', sans-serif;
+            font-size: 24px;
+            font-weight: 800;
+            color: var(--hico-navy);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo i {
+            color: var(--oxide-copper);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 40px;
+        }
+
+        .nav-links a {
+            font-weight: 600;
+            font-size: 15px;
+            color: var(--hico-navy);
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--oxide-copper);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .header-contact {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: var(--hico-navy);
+            font-weight: 700;
+            font-family: 'Manrope', sans-serif;
+        }
+
+        .header-contact i {
+            color: var(--oxide-copper);
+        }
+
+        /* --- Hero --- */
+        .hero {
+            position: relative;
+            height: 85vh;
+            min-height: 600px;
+            background-image: linear-gradient(rgba(15, 41, 66, 0.7), rgba(15, 41, 66, 0.6)), url('https://images.unsplash.com/photo-1541888946425-d81bb19240f5?q=80&w=2070&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            color: var(--white);
+        }
+
+        .hero-content {
+            max-width: 800px;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            margin-bottom: 24px;
+            color: var(--white);
+            letter-spacing: -0.02em;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 40px;
+            font-weight: 400;
+            max-width: 600px;
+        }
+
+        .hero-actions {
+            display: flex;
+            gap: 20px;
+        }
+
+        /* --- Trust Metrics --- */
+        .metrics {
+            background-color: var(--hico-navy);
+            color: var(--white);
+            padding: 60px 0;
+        }
+
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+            text-align: center;
+        }
+
+        .metric-item h3 {
+            font-size: 3rem;
+            color: var(--oxide-copper);
+            margin-bottom: 8px;
+        }
+
+        .metric-item p {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        /* --- Value Proposition --- */
+        .value-prop {
+            background-color: var(--white);
+        }
+
+        .value-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+        }
+
+        .value-card {
+            padding: 40px;
+            border: 1px solid var(--border-color);
+            background: var(--white);
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+
+        .value-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--oxide-copper);
+        }
+
+        .value-icon {
+            font-size: 2.5rem;
+            color: var(--oxide-copper);
+            margin-bottom: 24px;
+        }
+
+        .value-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 16px;
+        }
+
+        .value-card p {
+            color: var(--structural-steel);
+        }
+
+        /* --- Services --- */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+        }
+
+        .service-card {
+            background-color: var(--white);
+            border: 1px solid var(--border-color);
+            padding: 32px 24px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            height: 100%;
+            transition: all 0.3s ease;
+        }
+
+        .service-card:hover {
+            background-color: var(--hico-navy);
+            border-color: var(--hico-navy);
+        }
+
+        .service-card:hover h3,
+        .service-card:hover p,
+        .service-card:hover .service-icon {
+            color: var(--white);
+        }
+
+        .service-icon {
+            font-size: 2rem;
+            color: var(--hico-navy);
+            margin-bottom: 20px;
+            transition: color 0.3s ease;
+        }
+
+        .service-card h3 {
+            font-size: 1.25rem;
+            margin-bottom: 12px;
+            transition: color 0.3s ease;
+        }
+
+        .service-card p {
+            color: var(--structural-steel);
+            font-size: 0.95rem;
+            margin-bottom: 24px;
+            transition: color 0.3s ease;
+        }
+
+        .service-link {
+            margin-top: auto;
+            font-weight: 700;
+            color: var(--oxide-copper);
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            letter-spacing: 1px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        /* --- Featured Projects --- */
+        .projects {
+            background-color: var(--white);
+        }
+
+        .section-header {
+            margin-bottom: 60px;
+            display: flex;
+            justify-content: space-between;
+            align-items: end;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            margin-bottom: 16px;
+        }
+
+        .section-subtitle {
+            color: var(--structural-steel);
+            font-size: 1.1rem;
+            max-width: 600px;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+        }
+
+        .project-card {
+            position: relative;
+            overflow: hidden;
+            aspect-ratio: 16/10;
+        }
+
+        .project-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+
+        .project-card:hover .project-image {
+            transform: scale(1.05);
+        }
+
+        .project-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: linear-gradient(transparent, rgba(15, 41, 66, 0.95));
+            padding: 40px;
+            transform: translateY(20px);
+            opacity: 0;
+            transition: all 0.4s ease;
+        }
+
+        .project-card:hover .project-overlay {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .project-tag {
+            background-color: var(--oxide-copper);
+            color: var(--white);
+            padding: 4px 12px;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            font-weight: 700;
+            display: inline-block;
+            margin-bottom: 12px;
+        }
+
+        .project-name {
+            color: var(--white);
+            font-size: 1.5rem;
+            margin-bottom: 8px;
+        }
+
+        .project-link {
+            color: var(--white);
+            font-weight: 600;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        /* --- About --- */
+        .about-section {
+            background-color: var(--hico-navy);
+            color: var(--white);
+            padding: 0;
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+        }
+
+        .about-image {
+            background-image: url('https://images.unsplash.com/photo-1531835551805-16d864c8d311?q=80&w=2787&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+            min-height: 500px;
+        }
+
+        .about-content {
+            padding: 80px 60px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .about-content h2 {
+            color: var(--white);
+            margin-bottom: 24px;
+            font-size: 2.5rem;
+        }
+
+        .about-content p {
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 32px;
+            font-size: 1.1rem;
+        }
+
+        /* --- Footer --- */
+        .footer {
+            background-color: #081624;
+            color: var(--white);
+            padding: 80px 0 30px;
+            border-top: 4px solid var(--oxide-copper);
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr 1fr 1.5fr;
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+
+        .footer-logo {
+            font-size: 24px;
+            font-weight: 800;
+            font-family: 'Manrope', sans-serif;
+            margin-bottom: 24px;
+            display: block;
+        }
+
+        .footer h4 {
+            color: var(--white);
+            margin-bottom: 24px;
+            font-size: 1.1rem;
+        }
+
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.95rem;
+        }
+
+        .footer-links a:hover {
+            color: var(--oxide-copper);
+        }
+
+        .footer-contact-item {
+            display: flex;
+            gap: 16px;
+            margin-bottom: 16px;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .footer-contact-item i {
+            color: var(--oxide-copper);
+            margin-top: 4px;
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.4);
+            font-size: 0.85rem;
+        }
+
+        /* --- Responsive --- */
+        @media (max-width: 1024px) {
+            .hero h1 { font-size: 3rem; }
+            .metrics-grid { grid-template-columns: repeat(2, 1fr); gap: 40px; }
+            .services-grid { grid-template-columns: repeat(2, 1fr); }
+            .about-grid { grid-template-columns: 1fr; }
+            .about-image { min-height: 300px; }
+            .footer-grid { grid-template-columns: 1fr 1fr; }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links, .header-contact { display: none; }
+            .hero h1 { font-size: 2.5rem; }
+            .hero-actions { flex-direction: column; }
+            .value-grid { grid-template-columns: 1fr; }
+            .projects-grid { grid-template-columns: 1fr; }
+            .services-grid { grid-template-columns: 1fr; }
+            .metrics-grid { grid-template-columns: 1fr; }
+            .footer-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="container nav-container">
+            <a href="#" class="logo">
+                <i class="fa-solid fa-layer-group"></i> HICO
+            </a>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Expertise</a></li>
+                    <li><a href="#">Portfolio</a></li>
+                    <li><a href="#">About</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </nav>
+            <a href="tel:4792386705" class="header-contact">
+                <i class="fa-solid fa-phone"></i> (479) 238-6705
+            </a>
+        </div>
+    </header>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="container hero-content">
+            <h1>Complex Projects.<br>Confident Execution.</h1>
+            <p>Premier Construction Management & Owner Representation in Northwest Arkansas. We protect your interests and deliver precision.</p>
+            <div class="hero-actions">
+                <a href="#projects" class="btn btn-ghost">View Our Work</a>
+                <a href="#contact" class="btn btn-primary">Start Your Project</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Metrics -->
+    <div class="metrics">
+        <div class="container metrics-grid">
+            <div class="metric-item">
+                <h3>$350M+</h3>
+                <p>Projects Managed</p>
+            </div>
+            <div class="metric-item">
+                <h3>15+</h3>
+                <p>Years Experience</p>
+            </div>
+            <div class="metric-item">
+                <h3>100%</h3>
+                <p>Client Focused</p>
+            </div>
+            <div class="metric-item">
+                <h3>NWA</h3>
+                <p>Locally Owned</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Value Prop -->
+    <section class="section value-prop">
+        <div class="container">
+            <div class="text-center" style="margin-bottom: 60px;">
+                <h2 style="font-size: 2.25rem;">Why Choose Hico</h2>
+            </div>
+            <div class="value-grid">
+                <div class="value-card">
+                    <i class="fa-solid fa-compass-drafting value-icon"></i>
+                    <h3>Precision Planning</h3>
+                    <p>Our pre-construction expertise identifies risks before they become costs. We plan the work so you can work the plan.</p>
+                </div>
+                <div class="value-card">
+                    <i class="fa-solid fa-hospital-user value-icon"></i>
+                    <h3>Occupied Space Specialists</h3>
+                    <p>We excel in complex renovations within sensitive environments like hospitals and campuses, ensuring zero disruption to operations.</p>
+                </div>
+                <div class="value-card">
+                    <i class="fa-solid fa-handshake-simple value-icon"></i>
+                    <h3>Owner Advocacy</h3>
+                    <p>As your representative, we sit on your side of the table. Your budget, your timeline, and your vision are our only priorities.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services -->
+    <section class="section" style="background-color: var(--draft-paper);">
+        <div class="container">
+            <div class="section-header">
+                <div>
+                    <h2 class="section-title">Our Expertise</h2>
+                    <p class="section-subtitle">Comprehensive construction solutions tailored to complex needs.</p>
+                </div>
+                <a href="#" class="btn btn-outline">All Services</a>
+            </div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div>
+                        <i class="fa-solid fa-helmet-safety service-icon"></i>
+                        <h3>Construction Management</h3>
+                        <p>Full-service oversight from ground break to ribbon cutting.</p>
+                    </div>
+                    <span class="service-link">Learn More <i class="fa-solid fa-arrow-right"></i></span>
+                </div>
+                <div class="service-card">
+                    <div>
+                        <i class="fa-solid fa-user-tie service-icon"></i>
+                        <h3>Owner Representation</h3>
+                        <p>Acting as your eyes and ears to ensure vendor accountability.</p>
+                    </div>
+                    <span class="service-link">Learn More <i class="fa-solid fa-arrow-right"></i></span>
+                </div>
+                <div class="service-card">
+                    <div>
+                        <i class="fa-solid fa-clipboard-check service-icon"></i>
+                        <h3>Pre-Construction</h3>
+                        <p>Estimating, scheduling, and feasibility studies to set the foundation.</p>
+                    </div>
+                    <span class="service-link">Learn More <i class="fa-solid fa-arrow-right"></i></span>
+                </div>
+                <div class="service-card">
+                    <div>
+                        <i class="fa-solid fa-door-open service-icon"></i>
+                        <h3>Div 8 & 10 Install</h3>
+                        <p>Specialized installation for doors, frames, hardware, and accessories.</p>
+                    </div>
+                    <span class="service-link">Learn More <i class="fa-solid fa-arrow-right"></i></span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects -->
+    <section class="section projects" id="projects">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Featured Projects</h2>
+            </div>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?q=80&w=2070&auto=format&fit=crop" alt="Medical Center" class="project-image">
+                    <div class="project-overlay">
+                        <span class="project-tag">Medical</span>
+                        <h3 class="project-name">Regional Medical Expansion</h3>
+                        <a href="#" class="project-link">View Case Study <i class="fa-solid fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=2070&auto=format&fit=crop" alt="Corporate HQ" class="project-image">
+                    <div class="project-overlay">
+                        <span class="project-tag">Commercial</span>
+                        <h3 class="project-name">Pinnacle Heights HQ</h3>
+                        <a href="#" class="project-link">View Case Study <i class="fa-solid fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <img src="https://images.unsplash.com/photo-1562774053-701939374585?q=80&w=2086&auto=format&fit=crop" alt="University Lab" class="project-image">
+                    <div class="project-overlay">
+                        <span class="project-tag">Higher Education</span>
+                        <h3 class="project-name">Innovation Lab Phase II</h3>
+                        <a href="#" class="project-link">View Case Study <i class="fa-solid fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <img src="https://images.unsplash.com/photo-1590486819733-f26312a75221?q=80&w=2148&auto=format&fit=crop" alt="Industrial Facility" class="project-image">
+                    <div class="project-overlay">
+                        <span class="project-tag">Industrial</span>
+                        <h3 class="project-name">Logistics Hub South</h3>
+                        <a href="#" class="project-link">View Case Study <i class="fa-solid fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About / Founder -->
+    <section class="about-section" id="about">
+        <div class="container">
+            <div class="about-grid">
+                <div class="about-image"></div>
+                <div class="about-content">
+                    <h2>Built on Experience</h2>
+                    <p>With over $350M in delivered projects, Hico Construction was founded to bring a higher level of owner advocacy to the Northwest Arkansas market. We believe complex projects require more than just management - they require confident execution.</p>
+
+                    <div style="margin-top: 20px;">
+                        <h4 style="color: var(--oxide-copper); margin-bottom: 5px;">Spencer Nokes</h4>
+                        <p style="font-size: 0.9rem; color: rgba(255,255,255,0.6); margin-bottom: 30px;">Founder & Principal</p>
+                        <a href="#contact" class="btn btn-primary">Work With Us</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer" id="contact">
+        <div class="container">
+            <div class="footer-grid">
+                <div>
+                    <a href="#" class="footer-logo">HICO</a>
+                    <p style="color: rgba(255,255,255,0.7); font-size: 0.95rem; max-width: 300px;">
+                        Complex Projects. Confident Execution.<br>
+                        Serving Northwest Arkansas and the surrounding region with integrity and precision.
+                    </p>
+                </div>
+                <div>
+                    <h4>Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Our Services</a></li>
+                        <li><a href="#">Portfolio</a></li>
+                        <li><a href="#">Careers</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>Services</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">Construction Mgmt</a></li>
+                        <li><a href="#">Owner Rep</a></li>
+                        <li><a href="#">Pre-Construction</a></li>
+                        <li><a href="#">Specialty Install</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>Contact Us</h4>
+                    <div class="footer-contact-item">
+                        <i class="fa-solid fa-location-dot"></i>
+                        <span>Northwest Arkansas</span>
+                    </div>
+                    <div class="footer-contact-item">
+                        <i class="fa-solid fa-phone"></i>
+                        <a href="tel:4792386705">(479) 238-6705</a>
+                    </div>
+                    <div class="footer-contact-item">
+                        <i class="fa-solid fa-envelope"></i>
+                        <a href="mailto:info@hicoconstructionnwa.com">info@hicoconstructionnwa.com</a>
+                    </div>
+                    <div style="margin-top: 24px; display: flex; gap: 16px;">
+                        <a href="https://www.instagram.com/hico_construction/" style="font-size: 1.2rem; color: var(--oxide-copper);"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="https://www.linkedin.com/in/spencer-nokes-36890897" style="font-size: 1.2rem; color: var(--oxide-copper);"><i class="fa-brands fa-linkedin"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright">
+                &copy; 2024 Hico Construction. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Header Scroll Effect
+        const header = document.querySelector('.header');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+    </script>
+</body>
+</html>
