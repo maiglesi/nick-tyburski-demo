@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nick Tyburski - Audit Log Viewer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    :root {
+      --bg-page: #FAFAF8;
+      --bg-surface: #FFFFFF;
+      --border: #EAEAEA;
+      --text-primary: #1C1B1A;
+      --text-secondary: #5C5A56;
+      --shadow-float: 0 20px 40px -10px rgba(0,0,0,0.12);
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      padding: 32px;
+      background: var(--bg-page);
+      color: var(--text-primary);
+      font-family: "Inter", sans-serif;
+    }
+
+    .page {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <div class="flex flex-col w-full h-full bg-white border border-[#EAEAEA] rounded-[4px] overflow-hidden font-sans" style="box-shadow: var(--shadow-float);">
+      <div class="h-12 bg-[#FAFAF8] border-b border-[#EAEAEA] flex justify-between items-center px-5 flex-shrink-0">
+        <div class="flex items-center gap-3">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#1C1B1A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+          </svg>
+          <h3 class="font-semibold text-[14px] text-[#1C1B1A]">Fiduciary Audit Trail</h3>
+          <span class="px-1.5 py-0.5 bg-[#F3F4F6] text-[#5C5A56] text-[10px] font-mono rounded-[2px] uppercase">LIVE</span>
+        </div>
+        <div class="flex gap-2">
+          <div class="w-2.5 h-2.5 rounded-full bg-[#E5E7EB]"></div>
+          <div class="w-2.5 h-2.5 rounded-full bg-[#E5E7EB]"></div>
+        </div>
+      </div>
+
+      <div class="p-4 border-b border-[#EAEAEA] flex items-center justify-between gap-4 bg-white">
+        <div class="flex items-center gap-2 flex-1 max-w-md">
+          <div class="relative flex-1">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#767370" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="absolute left-3 top-1/2 -translate-y-1/2">
+              <circle cx="11" cy="11" r="8"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+            <input type="text" placeholder="Search by actor, action, or ID..." class="w-full h-9 pl-9 pr-4 text-[13px] border border-[#EAEAEA] rounded-[4px] placeholder-[#767370] focus:outline-none focus:border-[#4A90E2] transition-colors font-mono" />
+          </div>
+          <button class="h-9 px-3 flex items-center gap-2 border border-[#EAEAEA] rounded-[4px] hover:bg-[#FAFAF8] text-[13px] text-[#5C5A56] transition-colors">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polygon points="22 3 2 3 10 12 10 19 14 21 14 12 22 3"></polygon>
+            </svg>
+            <span>Filter</span>
+          </button>
+        </div>
+        <div class="flex items-center gap-2">
+          <button class="h-9 px-3 flex items-center gap-2 bg-[#1C1B1A] text-white rounded-[4px] hover:bg-[#333] text-[13px] transition-colors shadow-sm">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+              <polyline points="7 10 12 15 17 10"></polyline>
+              <line x1="12" y1="15" x2="12" y2="3"></line>
+            </svg>
+            <span>Export CSV</span>
+          </button>
+        </div>
+      </div>
+
+      <div class="h-16 border-b border-[#EAEAEA] bg-[#FAFAF8] flex items-end px-4 py-2 gap-1 relative overflow-hidden">
+        <div class="absolute top-2 left-4 text-[10px] font-mono text-[#767370] uppercase tracking-wider">Activity Volume (24h)</div>
+        <div class="flex-1 bg-[#E5E7EB] rounded-t-[1px]" style="height: 40%;"></div>
+        <div class="flex-1 bg-[#E5E7EB] rounded-t-[1px]" style="height: 55%;"></div>
+        <div class="flex-1 bg-[#FCD34D] rounded-t-[1px]" style="height: 70%;"></div>
+        <div class="flex-1 bg-[#E5E7EB] rounded-t-[1px]" style="height: 50%;"></div>
+        <div class="flex-1 bg-[#FCA5A5] rounded-t-[1px]" style="height: 75%;"></div>
+        <div class="flex-1 bg-[#E5E7EB] rounded-t-[1px]" style="height: 35%;"></div>
+      </div>
+
+      <div class="flex-1 overflow-y-auto">
+        <table class="w-full text-left border-collapse">
+          <thead class="sticky top-0 bg-white z-10 shadow-sm">
+            <tr class="border-b border-[#EAEAEA]">
+              <th class="py-3 px-4 text-[11px] font-semibold text-[#5C5A56] uppercase tracking-wider w-[180px]">Timestamp / ID</th>
+              <th class="py-3 px-4 text-[11px] font-semibold text-[#5C5A56] uppercase tracking-wider w-[200px]">Actor</th>
+              <th class="py-3 px-4 text-[11px] font-semibold text-[#5C5A56] uppercase tracking-wider w-[200px]">Event</th>
+              <th class="py-3 px-4 text-[11px] font-semibold text-[#5C5A56] uppercase tracking-wider">Details</th>
+              <th class="py-3 px-4 text-[11px] font-semibold text-[#5C5A56] uppercase tracking-wider w-[100px]">Severity</th>
+              <th class="py-3 px-4 text-[11px] font-semibold text-[#5C5A56] uppercase tracking-wider w-[40px]"></th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-[#F1F3F5]">
+            <tr class="group hover:bg-[#FAFAF8] transition-colors">
+              <td class="py-3 px-4 align-top">
+                <div class="flex flex-col gap-0.5">
+                  <span class="text-[13px] text-[#1C1B1A] font-mono">09:12:32</span>
+                  <span class="text-[11px] text-[#767370] font-mono">01/06/2026</span>
+                  <span class="text-[10px] text-[#767370] font-mono mt-1 opacity-60">#evt_21031</span>
+                </div>
+              </td>
+              <td class="py-3 px-4 align-top">
+                <div class="flex items-center gap-2">
+                  <div class="w-5 h-5 rounded-full flex items-center justify-center bg-[#F3F4F6] border border-[#E5E7EB]">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#5C5A56" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                      <circle cx="8.5" cy="7" r="4"></circle>
+                    </svg>
+                  </div>
+                  <div class="flex flex-col">
+                    <span class="text-[13px] font-medium leading-none text-[#1C1B1A]">Nick Tyburski</span>
+                    <span class="text-[10px] text-[#5C5A56] leading-tight mt-0.5">Advisor</span>
+                  </div>
+                </div>
+                <div class="mt-1.5 flex items-center gap-1.5 text-[11px] text-[#767370] font-mono">
+                  <span>192.168.1.12</span>
+                </div>
+              </td>
+              <td class="py-3 px-4 align-top">
+                <div class="flex flex-col">
+                  <span class="text-[13px] font-medium text-[#1C1B1A]">Portfolio Rebalance Approved</span>
+                  <span class="text-[12px] text-[#5C5A56] mt-0.5">Fiduciary Portfolio Dashboard</span>
+                  <div class="flex gap-1 mt-1.5">
+                    <span class="px-1.5 py-0.5 border border-[#EAEAEA] rounded-[2px] text-[9px] font-medium text-[#5C5A56] bg-white">FIDUCIARY</span>
+                    <span class="px-1.5 py-0.5 border border-[#EAEAEA] rounded-[2px] text-[9px] font-medium text-[#5C5A56] bg-white">SEC</span>
+                  </div>
+                </div>
+              </td>
+              <td class="py-3 px-4 align-top">
+                <p class="text-[13px] text-[#5C5A56] leading-relaxed max-w-sm">Approved the risk-adjusted return rebalancing aligned to IPS.</p>
+                <div class="mt-1 flex items-center gap-3 text-[11px] text-[#767370]"><span>MacBook Pro</span><span>|</span><span>Bentonville, AR</span></div>
+              </td>
+              <td class="py-3 px-4 align-top">
+                <span class="flex items-center px-2 py-0.5 rounded-[2px] font-mono text-[10px] uppercase tracking-wide bg-[#F1F3F5] text-[#495057]">info</span>
+              </td>
+              <td class="py-3 px-4 align-middle text-right"><button class="p-1 text-[#767370] hover:text-[#1C1B1A] hover:bg-[#E5E7EB] rounded opacity-0 group-hover:opacity-100 transition-all">...</button></td>
+            </tr>
+
+            <tr class="group hover:bg-[#FAFAF8] transition-colors">
+              <td class="py-3 px-4 align-top">
+                <div class="flex flex-col gap-0.5">
+                  <span class="text-[13px] text-[#1C1B1A] font-mono">08:55:10</span>
+                  <span class="text-[11px] text-[#767370] font-mono">01/06/2026</span>
+                  <span class="text-[10px] text-[#767370] font-mono mt-1 opacity-60">#evt_21030</span>
+                </div>
+              </td>
+              <td class="py-3 px-4 align-top">
+                <div class="flex items-center gap-2">
+                  <div class="w-5 h-5 rounded-full flex items-center justify-center bg-[#F3F4F6] border border-[#E5E7EB]">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#F59E0B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <rect x="2" y="2" width="20" height="20" rx="5"></rect>
+                      <path d="M7 8h10M7 12h6M7 16h4"></path>
+                    </svg>
+                  </div>
+                  <div class="flex flex-col">
+                    <span class="text-[13px] font-medium leading-none text-[#1C1B1A]">Tax Agent</span>
+                    <span class="text-[10px] text-[#5C5A56] leading-tight mt-0.5">Automation</span>
+                  </div>
+                </div>
+                <div class="mt-1.5 flex items-center gap-1.5 text-[11px] text-[#767370] font-mono"><span>10.0.2.12</span></div>
+              </td>
+              <td class="py-3 px-4 align-top">
+                <div class="flex flex-col">
+                  <span class="text-[13px] font-medium text-[#1C1B1A]">Workbook Export</span>
+                  <span class="text-[12px] text-[#5C5A56] mt-0.5">Tax Provision Workbook</span>
+                  <div class="flex gap-1 mt-1.5">
+                    <span class="px-1.5 py-0.5 border border-[#EAEAEA] rounded-[2px] text-[9px] font-medium text-[#5C5A56] bg-white">TAX</span>
+                    <span class="px-1.5 py-0.5 border border-[#EAEAEA] rounded-[2px] text-[9px] font-medium text-[#5C5A56] bg-white">ASC740</span>
+                  </div>
+                </div>
+              </td>
+              <td class="py-3 px-4 align-top">
+                <p class="text-[13px] text-[#5C5A56] leading-relaxed max-w-sm">Exported tax-efficient decumulation scenarios for review.</p>
+                <div class="mt-1 flex items-center gap-3 text-[11px] text-[#767370]"><span>Worker Node</span><span>|</span><span>Internal</span></div>
+              </td>
+              <td class="py-3 px-4 align-top"><span class="flex items-center px-2 py-0.5 rounded-[2px] font-mono text-[10px] uppercase tracking-wide bg-[#F1F3F5] text-[#495057]">info</span></td>
+              <td class="py-3 px-4 align-middle text-right"><button class="p-1 text-[#767370] hover:text-[#1C1B1A] hover:bg-[#E5E7EB] rounded opacity-0 group-hover:opacity-100 transition-all">...</button></td>
+            </tr>
+
+            <tr class="group hover:bg-[#FAFAF8] transition-colors">
+              <td class="py-3 px-4 align-top">
+                <div class="flex flex-col gap-0.5">
+                  <span class="text-[13px] text-[#1C1B1A] font-mono">08:12:44</span>
+                  <span class="text-[11px] text-[#767370] font-mono">01/06/2026</span>
+                  <span class="text-[10px] text-[#767370] font-mono mt-1 opacity-60">#evt_21029</span>
+                </div>
+              </td>
+              <td class="py-3 px-4 align-top">
+                <div class="flex items-center gap-2">
+                  <div class="w-5 h-5 rounded-full flex items-center justify-center bg-[#F3F4F6] border border-[#E5E7EB]">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#F59E0B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <rect x="2" y="2" width="20" height="20" rx="5"></rect>
+                      <path d="M7 8h10M7 12h6M7 16h4"></path>
+                    </svg>
+                  </div>
+                  <div class="flex flex-col">
+                    <span class="text-[13px] font-medium leading-none text-[#1C1B1A]">Finance Agent</span>
+                    <span class="text-[10px] text-[#5C5A56] leading-tight mt-0.5">Automation</span>
+                  </div>
+                </div>
+                <div class="mt-1.5 flex items-center gap-1.5 text-[11px] text-[#767370] font-mono"><span>10.0.3.18</span></div>
+              </td>
+              <td class="py-3 px-4 align-top">
+                <div class="flex flex-col">
+                  <span class="text-[13px] font-medium text-[#1C1B1A]">Liquidity Forecast Updated</span>
+                  <span class="text-[12px] text-[#5C5A56] mt-0.5">Liquidity Event Forecast</span>
+                  <div class="flex gap-1 mt-1.5">
+                    <span class="px-1.5 py-0.5 border border-[#EAEAEA] rounded-[2px] text-[9px] font-medium text-[#5C5A56] bg-white">LIQUIDITY</span>
+                  </div>
+                </div>
+              </td>
+              <td class="py-3 px-4 align-top">
+                <p class="text-[13px] text-[#5C5A56] leading-relaxed max-w-sm">Updated timing assumptions for liquidity event close date.</p>
+                <div class="mt-1 flex items-center gap-3 text-[11px] text-[#767370]"><span>Virtual Instance</span><span>|</span><span>AWS us-east-1</span></div>
+              </td>
+              <td class="py-3 px-4 align-top"><span class="flex items-center px-2 py-0.5 rounded-[2px] font-mono text-[10px] uppercase tracking-wide bg-[#FEF3C7] text-[#854D0E]">warning</span></td>
+              <td class="py-3 px-4 align-middle text-right"><button class="p-1 text-[#767370] hover:text-[#1C1B1A] hover:bg-[#E5E7EB] rounded opacity-0 group-hover:opacity-100 transition-all">...</button></td>
+            </tr>
+
+            <tr class="group hover:bg-[#FAFAF8] transition-colors">
+              <td class="py-3 px-4 align-top">
+                <div class="flex flex-col gap-0.5">
+                  <span class="text-[13px] text-[#1C1B1A] font-mono">07:48:22</span>
+                  <span class="text-[11px] text-[#767370] font-mono">01/06/2026</span>
+                  <span class="text-[10px] text-[#767370] font-mono mt-1 opacity-60">#evt_21028</span>
+                </div>
+              </td>
+              <td class="py-3 px-4 align-top">
+                <div class="flex items-center gap-2">
+                  <div class="w-5 h-5 rounded-full flex items-center justify-center bg-[#F3F4F6] border border-[#E5E7EB]">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#64748B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                    </svg>
+                  </div>
+                  <div class="flex flex-col">
+                    <span class="text-[13px] font-medium leading-none text-[#1C1B1A]">Risk Agent</span>
+                    <span class="text-[10px] text-[#5C5A56] leading-tight mt-0.5">Monitoring</span>
+                  </div>
+                </div>
+                <div class="mt-1.5 flex items-center gap-1.5 text-[11px] text-[#767370] font-mono"><span>10.0.4.5</span></div>
+              </td>
+              <td class="py-3 px-4 align-top">
+                <div class="flex flex-col">
+                  <span class="text-[13px] font-medium text-[#1C1B1A]">Vendor Concentration Alert</span>
+                  <span class="text-[12px] text-[#5C5A56] mt-0.5">Vendor Risk Assessment</span>
+                  <div class="flex gap-1 mt-1.5">
+                    <span class="px-1.5 py-0.5 border border-[#EAEAEA] rounded-[2px] text-[9px] font-medium text-[#5C5A56] bg-white">RISK</span>
+                    <span class="px-1.5 py-0.5 border border-[#EAEAEA] rounded-[2px] text-[9px] font-medium text-[#5C5A56] bg-white">VENDOR</span>
+                  </div>
+                </div>
+              </td>
+              <td class="py-3 px-4 align-top">
+                <p class="text-[13px] text-[#5C5A56] leading-relaxed max-w-sm">Vendor community exposure exceeded 45% threshold.</p>
+                <div class="mt-1 flex items-center gap-3 text-[11px] text-[#767370]"><span>Scanner</span><span>|</span><span>Internal</span></div>
+              </td>
+              <td class="py-3 px-4 align-top"><span class="flex items-center px-2 py-0.5 rounded-[2px] font-mono text-[10px] uppercase tracking-wide bg-[#FEE2E2] text-[#991B1B]">critical</span></td>
+              <td class="py-3 px-4 align-middle text-right"><button class="p-1 text-[#767370] hover:text-[#1C1B1A] hover:bg-[#E5E7EB] rounded opacity-0 group-hover:opacity-100 transition-all">...</button></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

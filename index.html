@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MyCOO - Nick Tyburski Investor Demo</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <!-- Tailwind (CDN for rapid prototyping of inner components) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        emerald: { 50: '#ecfdf5', 600: '#059669' },
+                        amber: { 50: '#fffbeb', 100: '#fef3c7', 600: '#d97706' },
+                        slate: { 50: '#f8fafc', 100: '#f1f5f9', 600: '#475569', 800: '#1e293b' }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+
+    <!-- LEFT PANEL: COO Chat -->
+    <aside class="coo-panel">
+        <header class="brand-header">
+            <div class="brand-logo">MyCOO</div>
+            <div class="label" style="color:var(--accent-green)">● READY</div>
+        </header>
+
+        <div class="chat-history" id="chat-container">
+            <!-- Messages injected by JS -->
+        </div>
+
+        <div class="voice-container">
+            <div class="voice-orb" id="voice-orb">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#666" stroke-width="2"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"></path><path d="M19 10v2a7 7 0 0 1-14 0v-2"></path><line x1="12" y1="19" x2="12" y2="23"></line></svg>
+            </div>
+            <span class="label">TAP TO SPEAK</span>
+        </div>
+    </aside>
+
+    <!-- CENTER PANEL: Canvas -->
+    <main class="canvas-panel">
+        
+        <!-- Persistent Calendly Button -->
+        <a href="https://calendly.com/mycoo/investor-meeting" target="_blank" class="calendly-float-btn">
+            Schedule a Meeting
+        </a>
+
+        <!-- Welcome Overlay -->
+        <div id="welcome-overlay" class="welcome-overlay">
+            <div class="welcome-content">
+                <h1 class="welcome-title">Welcome to MyCOO, <span id="welcome-investor-name"></span></h1>
+                <p class="welcome-subtitle">Are you ready to learn more?</p>
+                <button id="welcome-start-btn" class="welcome-btn">Yes, show me</button>
+            </div>
+        </div>
+
+        <!-- Artifact / Slide Container -->
+        <div class="artifact-container" id="canvas-stage">
+            <!-- Dynamic Content Injected Here -->
+        </div>
+
+        <!-- Controls -->
+        <div class="director-controls">
+            <button class="control-btn" onclick="App.prevSlide()" title="Previous (Left Arrow)">←</button>
+            <button class="control-btn" onclick="App.nextSlide()" title="Next (Space/Right Arrow)">→</button>
+        </div>
+
+    </main>
+
+    <!-- RIGHT PANEL: Agent Rail -->
+    <aside class="rail-panel">
+        <header class="rail-header">
+            <span class="label">ACTIVE SWARM</span>
+            <span class="text-xs font-medium" id="agent-count">(0 Agents)</span>
+        </header>
+
+        <div id="rail-activity" class="artifact-card slim rail-activity"></div>
+        
+        <div id="agent-list" class="flex flex-col gap-4">
+            <!-- Agents injected by JS -->
+        </div>
+    </aside>
+
+    <!-- FULLSCREEN VIEWER OVERLAY -->
+    <div class="viewer-overlay" id="viewer-overlay">
+        <div class="viewer-window">
+            <header class="viewer-header">
+                <div class="flex items-center gap-2">
+                    <span class="text-sm font-semibold" id="viewer-title">Document Title</span>
+                    <span class="label bg-green-100 text-green-700 px-2 py-0.5 rounded">LIVE PREVIEW</span>
+                </div>
+                <div class="flex items-center gap-4">
+                    <a href="#" target="_blank" id="viewer-link" class="text-xs text-blue-600 hover:underline">Open in New Tab</a>
+                    <button onclick="App.closeViewer()" class="hover:bg-gray-100 p-1 rounded">✕</button>
+                </div>
+            </header>
+            <iframe src="" id="viewer-frame" class="flex-1 w-full bg-white border-none"></iframe>
+        </div>
+    </div>
+
+    <!-- SCRIPTS -->
+    <script src="js/data.js"></script>
+    <script src="js/components.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>

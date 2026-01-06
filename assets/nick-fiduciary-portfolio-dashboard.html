@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nick Tyburski - Fiduciary Portfolio Dashboard</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    :root {
+      --bg-page: #FAFAF8;
+      --bg-surface: #FFFFFF;
+      --border: #EAEAEA;
+      --text-primary: #1C1B1A;
+      --text-secondary: #5C5A56;
+      --shadow-float: 0 20px 40px -10px rgba(0,0,0,0.12);
+      --agent-finance: #F59E0B;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      padding: 32px;
+      background: var(--bg-page);
+      color: var(--text-primary);
+      font-family: "Inter", sans-serif;
+    }
+
+    .page {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <div
+      class="w-full max-w-5xl mx-auto flex flex-col overflow-hidden"
+      style="background-color: var(--bg-surface); border: 1px solid var(--border); border-radius: 4px; box-shadow: var(--shadow-float);"
+    >
+      <div class="h-12 px-5 flex items-center justify-between border-b" style="background-color: #FAFAFA; border-color: var(--border);">
+        <div class="flex items-center gap-3">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1C1B1A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="12" y1="20" x2="12" y2="10"></line>
+            <line x1="18" y1="20" x2="18" y2="4"></line>
+            <line x1="6" y1="20" x2="6" y2="16"></line>
+          </svg>
+          <div>
+            <h3 class="text-sm font-semibold" style="color: var(--text-primary);">Fiduciary Portfolio Dashboard</h3>
+            <p class="text-[10px] text-gray-500">Risk-adjusted return view aligned to fiduciary standard</p>
+          </div>
+          <span class="font-mono text-[10px] bg-emerald-50 text-emerald-700 px-2 py-0.5 rounded">+1.03% YTD</span>
+        </div>
+        <div class="flex gap-2">
+          <div class="w-2.5 h-2.5 rounded-full bg-gray-200"></div>
+          <div class="w-2.5 h-2.5 rounded-full bg-gray-200"></div>
+        </div>
+      </div>
+
+      <div class="p-6 flex flex-col gap-6">
+        <div class="grid grid-cols-4 gap-4">
+          <div class="p-4 rounded border border-[var(--border)] bg-[var(--bg-page)]">
+            <span class="font-mono text-[10px] text-[var(--text-secondary)] uppercase tracking-wide">Total Portfolio</span>
+            <div class="text-2xl font-semibold mt-1" style="color: var(--agent-finance);">$27.0M</div>
+          </div>
+          <div class="p-4 rounded border border-[var(--border)] bg-[var(--bg-page)]">
+            <span class="font-mono text-[10px] text-[var(--text-secondary)] uppercase tracking-wide">Current Value</span>
+            <div class="text-2xl font-semibold mt-1 text-[var(--text-primary)]">$27.28M</div>
+          </div>
+          <div class="p-4 rounded border border-[var(--border)] bg-[var(--bg-page)]">
+            <span class="font-mono text-[10px] text-[var(--text-secondary)] uppercase tracking-wide">Weighted Yield</span>
+            <div class="text-2xl font-semibold mt-1 text-emerald-600">5.08%</div>
+          </div>
+          <div class="p-4 rounded border border-[var(--border)] bg-[var(--bg-page)]">
+            <span class="font-mono text-[10px] text-[var(--text-secondary)] uppercase tracking-wide">Avg Duration</span>
+            <div class="text-2xl font-semibold mt-1 text-[var(--text-primary)]">134 days</div>
+          </div>
+        </div>
+
+        <div class="p-4 rounded border border-[var(--border)] bg-[var(--bg-page)]">
+          <span class="font-mono text-[10px] text-[var(--text-secondary)] uppercase tracking-wide block mb-3">Portfolio Allocation</span>
+          <div class="flex flex-col gap-3">
+            <div class="flex h-4 rounded-sm overflow-hidden">
+              <div style="width: 29.63%; background-color: #3B82F6;" title="T-Bill: $8.0M"></div>
+              <div style="width: 46.30%; background-color: #22C55E;" title="Money Market: $12.5M"></div>
+              <div style="width: 12.96%; background-color: #F59E0B;" title="Commercial Paper: $3.5M"></div>
+              <div style="width: 11.11%; background-color: #8B5CF6;" title="CD: $3.0M"></div>
+            </div>
+            <div class="flex flex-wrap gap-4">
+              <div class="flex items-center gap-2">
+                <div class="w-3 h-3 rounded-sm" style="background-color: #3B82F6;"></div>
+                <span class="text-xs text-[var(--text-secondary)]">T-Bill: 29.6%</span>
+              </div>
+              <div class="flex items-center gap-2">
+                <div class="w-3 h-3 rounded-sm" style="background-color: #22C55E;"></div>
+                <span class="text-xs text-[var(--text-secondary)]">Money Market: 46.3%</span>
+              </div>
+              <div class="flex items-center gap-2">
+                <div class="w-3 h-3 rounded-sm" style="background-color: #F59E0B;"></div>
+                <span class="text-xs text-[var(--text-secondary)]">Commercial Paper: 13.0%</span>
+              </div>
+              <div class="flex items-center gap-2">
+                <div class="w-3 h-3 rounded-sm" style="background-color: #8B5CF6;"></div>
+                <span class="text-xs text-[var(--text-secondary)]">CD: 11.1%</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="flex gap-2">
+          <button class="px-3 py-1.5 text-xs font-medium rounded transition-colors bg-[var(--text-primary)] text-white">All</button>
+          <button class="px-3 py-1.5 text-xs font-medium rounded transition-colors bg-gray-100 text-[var(--text-secondary)] hover:bg-gray-200">T-Bill</button>
+          <button class="px-3 py-1.5 text-xs font-medium rounded transition-colors bg-gray-100 text-[var(--text-secondary)] hover:bg-gray-200">Money Market</button>
+          <button class="px-3 py-1.5 text-xs font-medium rounded transition-colors bg-gray-100 text-[var(--text-secondary)] hover:bg-gray-200">Commercial Paper</button>
+          <button class="px-3 py-1.5 text-xs font-medium rounded transition-colors bg-gray-100 text-[var(--text-secondary)] hover:bg-gray-200">CD</button>
+        </div>
+
+        <div class="flex flex-col">
+          <div class="grid grid-cols-12 gap-4 pb-2 border-b border-[var(--border)] text-[10px] font-mono text-[var(--text-secondary)] uppercase tracking-wider">
+            <div class="col-span-3">Investment</div>
+            <div class="col-span-2">Type</div>
+            <div class="col-span-2 text-right">Amount</div>
+            <div class="col-span-1 text-right">Rate</div>
+            <div class="col-span-2">Maturity</div>
+            <div class="col-span-2 text-right">Value</div>
+          </div>
+
+          <div class="flex flex-col">
+            <div class="grid grid-cols-12 gap-4 py-3 items-center border-b border-dashed border-gray-100 hover:bg-gray-50 transition-colors">
+              <div class="col-span-3 text-sm font-medium text-[var(--text-primary)]">3-Month T-Bill</div>
+              <div class="col-span-2"><span class="text-[10px] font-mono px-2 py-0.5 rounded" style="background-color: #3B82F615; color: #3B82F6;">T-Bill</span></div>
+              <div class="col-span-2 text-right text-sm font-mono text-[var(--text-primary)]">$5,000,000</div>
+              <div class="col-span-1 text-right text-sm font-mono text-emerald-600">5.25%</div>
+              <div class="col-span-2 text-xs text-[var(--text-secondary)]">2025-03-15 <span class="text-[10px] text-gray-400 ml-1">(82d)</span></div>
+              <div class="col-span-2 text-right text-sm font-mono text-[var(--text-primary)]">$5,065,625</div>
+            </div>
+            <div class="grid grid-cols-12 gap-4 py-3 items-center border-b border-dashed border-gray-100 hover:bg-gray-50 transition-colors">
+              <div class="col-span-3 text-sm font-medium text-[var(--text-primary)]">6-Month T-Bill</div>
+              <div class="col-span-2"><span class="text-[10px] font-mono px-2 py-0.5 rounded" style="background-color: #3B82F615; color: #3B82F6;">T-Bill</span></div>
+              <div class="col-span-2 text-right text-sm font-mono text-[var(--text-primary)]">$3,000,000</div>
+              <div class="col-span-1 text-right text-sm font-mono text-emerald-600">5.15%</div>
+              <div class="col-span-2 text-xs text-[var(--text-secondary)]">2025-06-20 <span class="text-[10px] text-gray-400 ml-1">(179d)</span></div>
+              <div class="col-span-2 text-right text-sm font-mono text-[var(--text-primary)]">$3,077,250</div>
+            </div>
+            <div class="grid grid-cols-12 gap-4 py-3 items-center border-b border-dashed border-gray-100 hover:bg-gray-50 transition-colors">
+              <div class="col-span-3 text-sm font-medium text-[var(--text-primary)]">Fidelity Govt MMF</div>
+              <div class="col-span-2"><span class="text-[10px] font-mono px-2 py-0.5 rounded" style="background-color: #22C55E15; color: #22C55E;">Money Market</span></div>
+              <div class="col-span-2 text-right text-sm font-mono text-[var(--text-primary)]">$8,000,000</div>
+              <div class="col-span-1 text-right text-sm font-mono text-emerald-600">5.01%</div>
+              <div class="col-span-2 text-xs text-[var(--text-secondary)]">On Demand</div>
+              <div class="col-span-2 text-right text-sm font-mono text-[var(--text-primary)]">$8,000,000</div>
+            </div>
+            <div class="grid grid-cols-12 gap-4 py-3 items-center border-b border-dashed border-gray-100 hover:bg-gray-50 transition-colors">
+              <div class="col-span-3 text-sm font-medium text-[var(--text-primary)]">Vanguard Prime MMF</div>
+              <div class="col-span-2"><span class="text-[10px] font-mono px-2 py-0.5 rounded" style="background-color: #22C55E15; color: #22C55E;">Money Market</span></div>
+              <div class="col-span-2 text-right text-sm font-mono text-[var(--text-primary)]">$4,500,000</div>
+              <div class="col-span-1 text-right text-sm font-mono text-emerald-600">5.08%</div>
+              <div class="col-span-2 text-xs text-[var(--text-secondary)]">On Demand</div>
+              <div class="col-span-2 text-right text-sm font-mono text-[var(--text-primary)]">$4,500,000</div>
+            </div>
+            <div class="grid grid-cols-12 gap-4 py-3 items-center border-b border-dashed border-gray-100 hover:bg-gray-50 transition-colors">
+              <div class="col-span-3 text-sm font-medium text-[var(--text-primary)]">Apple Inc CP</div>
+              <div class="col-span-2"><span class="text-[10px] font-mono px-2 py-0.5 rounded" style="background-color: #F59E0B15; color: #F59E0B;">Commercial Paper</span></div>
+              <div class="col-span-2 text-right text-sm font-mono text-[var(--text-primary)]">$2,000,000</div>
+              <div class="col-span-1 text-right text-sm font-mono text-emerald-600">5.35%</div>
+              <div class="col-span-2 text-xs text-[var(--text-secondary)]">2025-02-28 <span class="text-[10px] text-gray-400 ml-1">(67d)</span></div>
+              <div class="col-span-2 text-right text-sm font-mono text-[var(--text-primary)]">$2,019,667</div>
+            </div>
+            <div class="grid grid-cols-12 gap-4 py-3 items-center border-b border-dashed border-gray-100 hover:bg-gray-50 transition-colors">
+              <div class="col-span-3 text-sm font-medium text-[var(--text-primary)]">Microsoft Corp CP</div>
+              <div class="col-span-2"><span class="text-[10px] font-mono px-2 py-0.5 rounded" style="background-color: #F59E0B15; color: #F59E0B;">Commercial Paper</span></div>
+              <div class="col-span-2 text-right text-sm font-mono text-[var(--text-primary)]">$1,500,000</div>
+              <div class="col-span-1 text-right text-sm font-mono text-emerald-600">5.30%</div>
+              <div class="col-span-2 text-xs text-[var(--text-secondary)]">2025-04-10 <span class="text-[10px] text-gray-400 ml-1">(108d)</span></div>
+              <div class="col-span-2 text-right text-sm font-mono text-[var(--text-primary)]">$1,523,625</div>
+            </div>
+            <div class="grid grid-cols-12 gap-4 py-3 items-center border-b border-dashed border-gray-100 hover:bg-gray-50 transition-colors">
+              <div class="col-span-3 text-sm font-medium text-[var(--text-primary)]">Chase 12-Month CD</div>
+              <div class="col-span-2"><span class="text-[10px] font-mono px-2 py-0.5 rounded" style="background-color: #8B5CF615; color: #8B5CF6;">CD</span></div>
+              <div class="col-span-2 text-right text-sm font-mono text-[var(--text-primary)]">$2,000,000</div>
+              <div class="col-span-1 text-right text-sm font-mono text-emerald-600">4.75%</div>
+              <div class="col-span-2 text-xs text-[var(--text-secondary)]">2025-09-30 <span class="text-[10px] text-gray-400 ml-1">(281d)</span></div>
+              <div class="col-span-2 text-right text-sm font-mono text-[var(--text-primary)]">$2,073,150</div>
+            </div>
+            <div class="grid grid-cols-12 gap-4 py-3 items-center border-b border-dashed border-gray-100 hover:bg-gray-50 transition-colors">
+              <div class="col-span-3 text-sm font-medium text-[var(--text-primary)]">Citi 6-Month CD</div>
+              <div class="col-span-2"><span class="text-[10px] font-mono px-2 py-0.5 rounded" style="background-color: #8B5CF615; color: #8B5CF6;">CD</span></div>
+              <div class="col-span-2 text-right text-sm font-mono text-[var(--text-primary)]">$1,000,000</div>
+              <div class="col-span-1 text-right text-sm font-mono text-emerald-600">4.50%</div>
+              <div class="col-span-2 text-xs text-[var(--text-secondary)]">2025-05-15 <span class="text-[10px] text-gray-400 ml-1">(143d)</span></div>
+              <div class="col-span-2 text-right text-sm font-mono text-[var(--text-primary)]">$1,017,625</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="px-5 py-3 border-t flex items-center justify-between" style="background-color: #FAFAFA; border-color: var(--border);">
+        <div class="flex items-center gap-2">
+          <div class="w-2 h-2 rounded-full animate-pulse" style="background-color: var(--agent-finance);"></div>
+          <span class="text-[10px] font-mono text-[var(--text-secondary)] uppercase">Fiduciary monitoring active</span>
+        </div>
+        <span class="text-[10px] text-gray-400">Last updated: Dec 23, 2025 2:30 PM</span>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

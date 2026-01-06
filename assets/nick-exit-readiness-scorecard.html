@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nick Tyburski - Exit Readiness Scorecard</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    :root {
+      --bg-page: #FAFAF8;
+      --bg-surface: #FFFFFF;
+      --border: #EAEAEA;
+      --text-primary: #1C1B1A;
+      --text-secondary: #5C5A56;
+      --text-muted: #767370;
+      --accent-blue: #4A90E2;
+      --accent-green: #22C55E;
+      --accent-red: #EF4444;
+      --accent-yellow: #F59E0B;
+      --agent-ops: #1E3A5F;
+      --shadow-float: 0 20px 40px -10px rgba(0,0,0,0.12);
+      --font-sans: "Inter", sans-serif;
+      --font-mono: "JetBrains Mono", monospace;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      padding: 32px;
+      background: var(--bg-page);
+      color: var(--text-primary);
+      font-family: var(--font-sans);
+    }
+
+    .page {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <div
+      class="flex flex-col w-full h-full overflow-hidden"
+      style="background-color: var(--bg-surface); border: 1px solid var(--border); border-radius: 4px; box-shadow: var(--shadow-float); font-family: var(--font-sans);"
+    >
+      <div
+        class="flex items-center justify-between px-5 py-3 border-b shrink-0"
+        style="background-color: #FAFAFA; border-color: var(--border); height: 48px;"
+      >
+        <div class="flex items-center gap-3">
+          <div style="color: var(--agent-ops);">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="3"></circle>
+              <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1.51 1H19.4a1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+            </svg>
+          </div>
+          <h3 class="text-sm font-semibold" style="color: var(--text-primary);">Exit Readiness Scorecard</h3>
+          <span
+            class="text-[10px] px-1.5 py-0.5 rounded font-medium"
+            style="background-color: #DCFCE7; color: #166534; font-family: var(--font-mono);"
+          >
+            LIVE
+          </span>
+        </div>
+        <div class="flex items-center gap-2 text-gray-400 hover:text-gray-600 cursor-pointer">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="1"></circle>
+            <circle cx="19" cy="12" r="1"></circle>
+            <circle cx="5" cy="12" r="1"></circle>
+          </svg>
+        </div>
+      </div>
+
+      <div class="flex-1 overflow-y-auto p-6 space-y-8">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div class="col-span-1 flex flex-col items-center justify-center p-4 border rounded-lg bg-[#FAFAFA]/50" style="border-color: var(--border);">
+            <div class="relative flex items-center justify-center w-32 h-32">
+              <svg class="transform -rotate-180" width="120" height="60" viewBox="0 0 120 60" style="overflow: visible;">
+                <path
+                  d="M 10 50 A 50 50 0 0 1 110 50"
+                  fill="none"
+                  stroke="var(--border)"
+                  stroke-width="10"
+                  stroke-linecap="round"
+                />
+                <path
+                  d="M 10 50 A 50 50 0 0 1 110 50"
+                  fill="none"
+                  stroke="var(--agent-ops)"
+                  stroke-width="10"
+                  stroke-linecap="round"
+                  stroke-dasharray="157.08 157.08"
+                  stroke-dashoffset="14.1"
+                  class="transition-all duration-1000 ease-out"
+                />
+              </svg>
+              <div class="absolute top-10 flex flex-col items-center">
+                <span class="text-3xl font-bold" style="font-family: var(--font-sans); color: var(--text-primary);">91</span>
+                <span class="text-[10px] uppercase tracking-wider" style="font-family: var(--font-mono); color: var(--text-secondary);">Score</span>
+              </div>
+            </div>
+            <div class="mt-2 text-center">
+              <div class="text-sm font-medium">Exit Ready</div>
+              <div class="text-xs text-gray-500">Transferable value trending up</div>
+            </div>
+          </div>
+
+          <div class="col-span-2 grid grid-cols-2 gap-4">
+            <div class="p-4 border rounded-lg" style="border-color: var(--border);">
+              <div class="text-xs text-gray-500 font-mono mb-2 uppercase">Transferable Value Trend (QoQ)</div>
+              <div class="flex items-end gap-2 mb-2">
+                <span class="text-2xl font-semibold">+3.2%</span>
+                <span class="text-sm text-green-600 mb-1 flex items-center gap-1">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#22C55E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline>
+                    <polyline points="17 6 23 6 23 12"></polyline>
+                  </svg>
+                  Consistent
+                </span>
+              </div>
+              <svg width="100%" height="40" viewBox="0 0 200 40" preserveAspectRatio="none">
+                <polyline
+                  points="0,35 20,32 40,25 60,28 80,20 100,22 120,15 140,10 160,12 180,5 200,8"
+                  fill="none"
+                  stroke="var(--agent-ops)"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  vector-effect="non-scaling-stroke"
+                />
+                <defs>
+                  <linearGradient id="chartGradientExit" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0%" stop-color="var(--agent-ops)" stop-opacity="0.2" />
+                    <stop offset="100%" stop-color="var(--agent-ops)" stop-opacity="0" />
+                  </linearGradient>
+                </defs>
+                <polyline
+                  points="0,35 20,32 40,25 60,28 80,20 100,22 120,15 140,10 160,12 180,5 200,8 200,40 0,40"
+                  fill="url(#chartGradientExit)"
+                  stroke="none"
+                />
+              </svg>
+            </div>
+
+            <div class="p-4 border rounded-lg" style="border-color: var(--border);">
+              <div class="text-xs text-gray-500 font-mono mb-2 uppercase">Maturity Level</div>
+              <div class="flex items-center gap-1 mt-3">
+                <div class="h-8 flex-1 rounded text-center flex items-center justify-center text-xs font-bold" style="background-color: var(--agent-ops); color: #FFF;">1</div>
+                <div class="h-8 flex-1 rounded text-center flex items-center justify-center text-xs font-bold" style="background-color: var(--agent-ops); color: #FFF;">2</div>
+                <div class="h-8 flex-1 rounded text-center flex items-center justify-center text-xs font-bold" style="background-color: var(--agent-ops); color: #FFF;">3</div>
+                <div class="h-8 flex-1 rounded text-center flex items-center justify-center text-xs font-bold" style="background-color: var(--agent-ops); color: #FFF;">4</div>
+                <div class="h-8 flex-1 rounded text-center flex items-center justify-center text-xs font-bold" style="background-color: #E5E7EB; color: #000; opacity: 0.2;">5</div>
+              </div>
+              <div class="text-xs text-center mt-2 text-gray-500 font-medium">Level 4: Integrated</div>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <h4 class="text-sm font-semibold mb-4" style="color: var(--text-primary);">Performance Pillars</h4>
+          <div class="grid grid-cols-1 md:grid-cols-5 gap-4">
+            <div class="p-4 border rounded hover:shadow-sm transition-shadow" style="border-color: var(--border);">
+              <div class="flex justify-between items-start mb-2">
+                <span class="text-xs font-medium text-gray-600">Transferable Value</span>
+              </div>
+              <div class="text-2xl font-bold mb-1">92</div>
+              <div class="flex items-center gap-1 text-[10px] font-mono mb-2">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#22C55E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline>
+                  <polyline points="17 6 23 6 23 12"></polyline>
+                </svg>
+                <span style="color: var(--accent-green);">2.1%</span>
+                <span class="text-gray-400">vs prev</span>
+              </div>
+              <div class="relative w-full h-2 bg-gray-100 rounded-full mt-2">
+                <div class="absolute h-full rounded-full" style="width: 92%; background-color: var(--accent-green);"></div>
+                <div class="absolute h-4 w-0.5 bg-gray-400 -top-1" style="left: 88%;"></div>
+              </div>
+              <div class="text-[10px] text-right text-gray-400 mt-1">Target: 88</div>
+            </div>
+
+            <div class="p-4 border rounded hover:shadow-sm transition-shadow" style="border-color: var(--border);">
+              <div class="flex justify-between items-start mb-2">
+                <span class="text-xs font-medium text-gray-600">Customer Concentration</span>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#F59E0B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="12" cy="12" r="10"></circle>
+                  <line x1="12" y1="8" x2="12" y2="12"></line>
+                  <line x1="12" y1="16" x2="12.01" y2="16"></line>
+                </svg>
+              </div>
+              <div class="text-2xl font-bold mb-1">78</div>
+              <div class="flex items-center gap-1 text-[10px] font-mono mb-2">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#EF4444" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="23 18 13.5 8.5 8.5 13.5 1 6"></polyline>
+                  <polyline points="17 18 23 18 23 12"></polyline>
+                </svg>
+                <span style="color: var(--accent-red);">1.4%</span>
+                <span class="text-gray-400">vs prev</span>
+              </div>
+              <div class="relative w-full h-2 bg-gray-100 rounded-full mt-2">
+                <div class="absolute h-full rounded-full" style="width: 78%; background-color: var(--accent-yellow);"></div>
+                <div class="absolute h-4 w-0.5 bg-gray-400 -top-1" style="left: 85%;"></div>
+              </div>
+              <div class="text-[10px] text-right text-gray-400 mt-1">Target: 85</div>
+            </div>
+
+            <div class="p-4 border rounded hover:shadow-sm transition-shadow" style="border-color: var(--border);">
+              <div class="flex justify-between items-start mb-2">
+                <span class="text-xs font-medium text-gray-600">Recurring Revenue</span>
+              </div>
+              <div class="text-2xl font-bold mb-1">88</div>
+              <div class="flex items-center gap-1 text-[10px] font-mono mb-2">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#22C55E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline>
+                  <polyline points="17 6 23 6 23 12"></polyline>
+                </svg>
+                <span style="color: var(--accent-green);">0.9%</span>
+                <span class="text-gray-400">vs prev</span>
+              </div>
+              <div class="relative w-full h-2 bg-gray-100 rounded-full mt-2">
+                <div class="absolute h-full rounded-full" style="width: 88%; background-color: var(--accent-blue);"></div>
+                <div class="absolute h-4 w-0.5 bg-gray-400 -top-1" style="left: 86%;"></div>
+              </div>
+              <div class="text-[10px] text-right text-gray-400 mt-1">Target: 86</div>
+            </div>
+
+            <div class="p-4 border rounded hover:shadow-sm transition-shadow" style="border-color: var(--border);">
+              <div class="flex justify-between items-start mb-2">
+                <span class="text-xs font-medium text-gray-600">Management Depth</span>
+              </div>
+              <div class="text-2xl font-bold mb-1">84</div>
+              <div class="flex items-center gap-1 text-[10px] font-mono mb-2">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#22C55E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline>
+                  <polyline points="17 6 23 6 23 12"></polyline>
+                </svg>
+                <span style="color: var(--accent-green);">1.6%</span>
+                <span class="text-gray-400">vs prev</span>
+              </div>
+              <div class="relative w-full h-2 bg-gray-100 rounded-full mt-2">
+                <div class="absolute h-full rounded-full" style="width: 84%; background-color: var(--accent-blue);"></div>
+                <div class="absolute h-4 w-0.5 bg-gray-400 -top-1" style="left: 82%;"></div>
+              </div>
+              <div class="text-[10px] text-right text-gray-400 mt-1">Target: 82</div>
+            </div>
+
+            <div class="p-4 border rounded hover:shadow-sm transition-shadow" style="border-color: var(--border);">
+              <div class="flex justify-between items-start mb-2">
+                <span class="text-xs font-medium text-gray-600">Financial Controls</span>
+              </div>
+              <div class="text-2xl font-bold mb-1">90</div>
+              <div class="flex items-center gap-1 text-[10px] font-mono mb-2">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#22C55E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline>
+                  <polyline points="17 6 23 6 23 12"></polyline>
+                </svg>
+                <span style="color: var(--accent-green);">2.4%</span>
+                <span class="text-gray-400">vs prev</span>
+              </div>
+              <div class="relative w-full h-2 bg-gray-100 rounded-full mt-2">
+                <div class="absolute h-full rounded-full" style="width: 90%; background-color: var(--accent-green);"></div>
+                <div class="absolute h-4 w-0.5 bg-gray-400 -top-1" style="left: 88%;"></div>
+              </div>
+              <div class="text-[10px] text-right text-gray-400 mt-1">Target: 88</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div class="col-span-1 md:col-span-2 border rounded-lg overflow-hidden" style="border-color: var(--border);">
+            <div class="px-4 py-3 bg-[#FAFAFA] border-b flex justify-between items-center" style="border-color: var(--border);">
+              <span class="text-xs font-semibold uppercase tracking-wider text-gray-500">Action Items</span>
+              <span class="text-xs text-blue-600 cursor-pointer hover:underline">View All</span>
+            </div>
+            <div class="divide-y" style="border-color: var(--border);">
+              <div class="px-4 py-3 flex items-center justify-between hover:bg-[#FAFAFA]/50">
+                <div class="flex items-start gap-3">
+                  <div class="mt-1 w-2 h-2 rounded-full bg-blue-500"></div>
+                  <div>
+                    <div class="text-sm font-medium text-gray-800">Reduce vendor community concentration to under 35%</div>
+                    <div class="text-xs text-gray-500 flex gap-2">
+                      <span>Customer Concentration</span>
+                      <span>|</span>
+                      <span>Growth Team</span>
+                    </div>
+                  </div>
+                </div>
+                <span class="text-[10px] font-mono px-2 py-1 bg-gray-100 rounded text-gray-600">IN PROGRESS</span>
+              </div>
+              <div class="px-4 py-3 flex items-center justify-between hover:bg-[#FAFAFA]/50">
+                <div class="flex items-start gap-3">
+                  <div class="mt-1 w-2 h-2 rounded-full bg-gray-300"></div>
+                  <div>
+                    <div class="text-sm font-medium text-gray-800">Formalize succession plan and management depth chart</div>
+                    <div class="text-xs text-gray-500 flex gap-2">
+                      <span>Management Depth</span>
+                      <span>|</span>
+                      <span>Executive Team</span>
+                    </div>
+                  </div>
+                </div>
+                <span class="text-[10px] font-mono px-2 py-1 bg-gray-100 rounded text-gray-600">PENDING</span>
+              </div>
+              <div class="px-4 py-3 flex items-center justify-between hover:bg-[#FAFAFA]/50">
+                <div class="flex items-start gap-3">
+                  <div class="mt-1 w-2 h-2 rounded-full bg-green-500"></div>
+                  <div>
+                    <div class="text-sm font-medium text-gray-800">Publish fiduciary standard investment policy update</div>
+                    <div class="text-xs text-gray-500 flex gap-2">
+                      <span>Financial Controls</span>
+                      <span>|</span>
+                      <span>Compliance</span>
+                    </div>
+                  </div>
+                </div>
+                <span class="text-[10px] font-mono px-2 py-1 bg-gray-100 rounded text-gray-600">COMPLETED</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-span-1 space-y-6">
+            <div class="border rounded-lg overflow-hidden" style="border-color: var(--border);">
+              <div class="px-4 py-3 bg-[#FAFAFA] border-b" style="border-color: var(--border);">
+                <span class="text-xs font-semibold uppercase tracking-wider text-gray-500">Dept. Ranking</span>
+              </div>
+              <table class="w-full text-sm text-left">
+                <thead class="bg-white text-gray-400 text-[10px] uppercase font-mono">
+                  <tr>
+                    <th class="px-4 py-2 font-medium">Dept</th>
+                    <th class="px-4 py-2 font-medium text-right">Score</th>
+                  </tr>
+                </thead>
+                <tbody class="divide-y" style="border-color: var(--border);">
+                  <tr>
+                    <td class="px-4 py-2 text-gray-700">Operations</td>
+                    <td class="px-4 py-2 text-right font-mono font-medium">94</td>
+                  </tr>
+                  <tr>
+                    <td class="px-4 py-2 text-gray-700">Finance</td>
+                    <td class="px-4 py-2 text-right font-mono font-medium">90</td>
+                  </tr>
+                  <tr>
+                    <td class="px-4 py-2 text-gray-700">Governance</td>
+                    <td class="px-4 py-2 text-right font-mono font-medium">87</td>
+                  </tr>
+                  <tr>
+                    <td class="px-4 py-2 text-gray-700">People</td>
+                    <td class="px-4 py-2 text-right font-mono font-medium">84</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div class="border rounded-lg overflow-hidden" style="border-color: var(--border);">
+              <div class="px-4 py-3 bg-[#FAFAFA] border-b" style="border-color: var(--border);">
+                <span class="text-xs font-semibold uppercase tracking-wider text-gray-500">Best Practices</span>
+              </div>
+              <div class="p-3 space-y-2">
+                <div class="flex items-center gap-2 text-sm text-gray-600">
+                  <div class="flex items-center justify-center w-4 h-4 border rounded bg-green-50 border-green-500">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#22C55E" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                      <polyline points="20 6 9 17 4 12"></polyline>
+                    </svg>
+                  </div>
+                  <span>Quarterly exit readiness check-ins</span>
+                </div>
+                <div class="flex items-center gap-2 text-sm text-gray-600">
+                  <div class="flex items-center justify-center w-4 h-4 border rounded bg-green-50 border-green-500">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#22C55E" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                      <polyline points="20 6 9 17 4 12"></polyline>
+                    </svg>
+                  </div>
+                  <span>Board-ready reporting cadence</span>
+                </div>
+                <div class="flex items-center gap-2 text-sm text-gray-600">
+                  <div class="flex items-center justify-center w-4 h-4 border rounded bg-white border-[#EAEAEA]"></div>
+                  <span class="text-gray-400">Transferable value gap audit</span>
+                </div>
+                <div class="flex items-center gap-2 text-sm text-gray-600">
+                  <div class="flex items-center justify-center w-4 h-4 border rounded bg-green-50 border-green-500">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#22C55E" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                      <polyline points="20 6 9 17 4 12"></polyline>
+                    </svg>
+                  </div>
+                  <span>Tax-efficient planning checklist</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

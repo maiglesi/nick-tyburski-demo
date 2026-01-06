@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nick Tyburski - Liquidity Event Forecast</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    :root {
+      --bg-page: #FAFAF8;
+      --bg-surface: #FFFFFF;
+      --border: #EAEAEA;
+      --text-primary: #1C1B1A;
+      --text-secondary: #5C5A56;
+      --text-muted: #767370;
+      --accent-gold: #F59E0B;
+      --shadow-float: 0 20px 40px -10px rgba(0,0,0,0.12);
+      --font-sans: "Inter", sans-serif;
+      --font-mono: "JetBrains Mono", monospace;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      padding: 32px;
+      background: var(--bg-page);
+      color: var(--text-primary);
+      font-family: var(--font-sans);
+    }
+
+    .page {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <div class="w-full max-w-5xl mx-auto font-sans text-[#1C1B1A]">
+      <div class="bg-white border border-[#EAEAEA] rounded shadow-sm overflow-hidden flex flex-col h-[620px]" style="box-shadow: var(--shadow-float);">
+        <div class="h-12 bg-[#FAFAFA] border-b border-[#EAEAEA] px-5 flex items-center justify-between shrink-0">
+          <div class="flex items-center gap-3">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M12 1V23" stroke="#F59E0B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M17 5H9.5C8.57174 5 7.6815 5.36875 7.02513 6.02513C6.36875 6.6815 6 7.57174 6 8.5C6 9.42826 6.36875 10.3185 7.02513 10.9749C7.6815 11.6313 8.57174 12 9.5 12H14.5C15.4283 12 16.3185 12.3688 16.9749 13.0251C17.6313 13.6815 18 14.5717 18 15.5C18 16.4283 17.6313 17.3185 16.9749 17.9749C16.3185 18.6313 15.4283 19 14.5 19H6" stroke="#F59E0B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <h3 class="font-semibold text-sm text-[#1C1B1A]">Liquidity Event Forecast Model</h3>
+            <span class="bg-[#FEF3C7] text-[#854D0E] text-[10px] font-mono px-1.5 py-0.5 rounded uppercase tracking-wide">Base Case</span>
+          </div>
+          <div class="flex gap-2">
+            <div class="w-2.5 h-2.5 rounded-full bg-[#E5E7EB]"></div>
+            <div class="w-2.5 h-2.5 rounded-full bg-[#E5E7EB]"></div>
+            <div class="w-2.5 h-2.5 rounded-full bg-[#E5E7EB]"></div>
+          </div>
+        </div>
+
+        <div class="flex flex-1 overflow-hidden">
+          <div class="w-[400px] border-r border-[#EAEAEA] flex flex-col bg-[#FAFAF8]">
+            <div class="p-4 border-b border-[#EAEAEA] bg-white">
+              <h4 class="text-xs font-semibold uppercase tracking-wider text-[#5C5A56] mb-4">Liquidity Drivers</h4>
+              <div class="flex gap-2 mb-2">
+                <button class="flex-1 text-xs py-1.5 rounded border bg-[#FEF3C7] border-[#F59E0B] text-[#854D0E] font-medium">Base</button>
+                <button class="flex-1 text-xs py-1.5 rounded border bg-white border-[#EAEAEA] text-[#5C5A56]">Upside</button>
+                <button class="flex-1 text-xs py-1.5 rounded border bg-white border-[#EAEAEA] text-[#5C5A56]">Downside</button>
+              </div>
+            </div>
+
+            <div class="flex-1 overflow-y-auto p-4 space-y-6">
+              <div class="group">
+                <div class="flex justify-between items-center mb-1.5">
+                  <div class="flex items-center gap-2">
+                    <span class="text-sm font-medium text-[#1C1B1A]">Enterprise Value Multiple</span>
+                    <svg width="12" height="12" viewBox="0 0 12 12" fill="none" class="text-red-500">
+                      <path d="M6 1L11 11H1L6 1Z" fill="currentColor"/>
+                    </svg>
+                  </div>
+                  <span class="font-mono text-sm text-[#F59E0B] font-medium bg-[#FFFBEB] px-1.5 rounded">6.8x</span>
+                </div>
+                <input type="range" min="4" max="8" step="0.1" value="6.8" class="w-full h-1.5 bg-[#E5E7EB] rounded-lg appearance-none accent-[#F59E0B]" />
+                <div class="flex justify-between text-[10px] text-[#767370] mt-1">
+                  <span>4.0x</span>
+                  <span class="text-[#5C5A56]">Exit multiple assumption</span>
+                  <span>8.0x</span>
+                </div>
+              </div>
+
+              <div class="group">
+                <div class="flex justify-between items-center mb-1.5">
+                  <div class="flex items-center gap-2">
+                    <span class="text-sm font-medium text-[#1C1B1A]">Working Capital Release</span>
+                    <svg width="12" height="12" viewBox="0 0 12 12" fill="none" class="text-amber-500">
+                      <rect x="2" y="2" width="8" height="8" rx="1" fill="currentColor"/>
+                    </svg>
+                  </div>
+                  <span class="font-mono text-sm text-[#F59E0B] font-medium bg-[#FFFBEB] px-1.5 rounded">$1.4M</span>
+                </div>
+                <input type="range" min="0.5" max="2.0" step="0.1" value="1.4" class="w-full h-1.5 bg-[#E5E7EB] rounded-lg appearance-none accent-[#F59E0B]" />
+                <div class="flex justify-between text-[10px] text-[#767370] mt-1">
+                  <span>$0.5M</span>
+                  <span class="text-[#5C5A56]">Cash release estimate</span>
+                  <span>$2.0M</span>
+                </div>
+              </div>
+
+              <div class="group">
+                <div class="flex justify-between items-center mb-1.5">
+                  <div class="flex items-center gap-2">
+                    <span class="text-sm font-medium text-[#1C1B1A]">Effective Tax Rate</span>
+                    <svg width="12" height="12" viewBox="0 0 12 12" fill="none" class="text-amber-500">
+                      <rect x="2" y="2" width="8" height="8" rx="1" fill="currentColor"/>
+                    </svg>
+                  </div>
+                  <span class="font-mono text-sm text-[#F59E0B] font-medium bg-[#FFFBEB] px-1.5 rounded">28%</span>
+                </div>
+                <input type="range" min="20" max="35" step="1" value="28" class="w-full h-1.5 bg-[#E5E7EB] rounded-lg appearance-none accent-[#F59E0B]" />
+                <div class="flex justify-between text-[10px] text-[#767370] mt-1">
+                  <span>20%</span>
+                  <span class="text-[#5C5A56]">Tax drag assumption</span>
+                  <span>35%</span>
+                </div>
+              </div>
+
+              <div class="group">
+                <div class="flex justify-between items-center mb-1.5">
+                  <div class="flex items-center gap-2">
+                    <span class="text-sm font-medium text-[#1C1B1A]">Earnout Portion</span>
+                    <svg width="12" height="12" viewBox="0 0 12 12" fill="none" class="text-green-500">
+                      <circle cx="6" cy="6" r="4" fill="currentColor"/>
+                    </svg>
+                  </div>
+                  <span class="font-mono text-sm text-[#F59E0B] font-medium bg-[#FFFBEB] px-1.5 rounded">15%</span>
+                </div>
+                <input type="range" min="0" max="30" step="1" value="15" class="w-full h-1.5 bg-[#E5E7EB] rounded-lg appearance-none accent-[#F59E0B]" />
+                <div class="flex justify-between text-[10px] text-[#767370] mt-1">
+                  <span>0%</span>
+                  <span class="text-[#5C5A56]">Performance holdback</span>
+                  <span>30%</span>
+                </div>
+              </div>
+
+              <div class="group">
+                <div class="flex justify-between items-center mb-1.5">
+                  <div class="flex items-center gap-2">
+                    <span class="text-sm font-medium text-[#1C1B1A]">Close Timeline</span>
+                    <svg width="12" height="12" viewBox="0 0 12 12" fill="none" class="text-green-500">
+                      <circle cx="6" cy="6" r="4" fill="currentColor"/>
+                    </svg>
+                  </div>
+                  <span class="font-mono text-sm text-[#F59E0B] font-medium bg-[#FFFBEB] px-1.5 rounded">9 mo</span>
+                </div>
+                <input type="range" min="3" max="12" step="1" value="9" class="w-full h-1.5 bg-[#E5E7EB] rounded-lg appearance-none accent-[#F59E0B]" />
+                <div class="flex justify-between text-[10px] text-[#767370] mt-1">
+                  <span>3 mo</span>
+                  <span class="text-[#5C5A56]">Liquidity event timing</span>
+                  <span>12 mo</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="flex-1 flex flex-col bg-white overflow-hidden">
+            <div class="p-6 grid grid-cols-2 gap-6 border-b border-[#EAEAEA]">
+              <div class="space-y-1">
+                <span class="text-xs text-[#5C5A56] uppercase tracking-wide">Projected Gross Proceeds</span>
+                <div class="flex items-baseline gap-2">
+                  <span class="text-3xl font-semibold text-[#1C1B1A] tracking-tight">$32.5M</span>
+                  <span class="text-xs font-medium text-emerald-600 bg-emerald-50 px-1.5 py-0.5 rounded">+18% vs base</span>
+                </div>
+              </div>
+
+              <div class="space-y-1">
+                <span class="text-xs text-[#5C5A56] uppercase tracking-wide">After-Tax Proceeds</span>
+                <div class="flex items-baseline gap-2">
+                  <span class="text-3xl font-semibold tracking-tight text-[#1C1B1A]">$23.4M</span>
+                  <span class="text-xs text-[#767370]">72% net</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="flex-1 p-6 flex flex-col">
+              <h4 class="text-xs font-semibold uppercase tracking-wider text-[#5C5A56] mb-6">Liquidity Event Waterfall</h4>
+
+              <div class="flex-1 flex items-end justify-center gap-8 pb-4 border-b border-dashed border-[#EAEAEA]">
+                <div class="flex flex-col items-center gap-2 w-20 group">
+                  <div class="text-xs font-mono text-[#5C5A56] mb-1">$28.0M</div>
+                  <div class="w-full bg-[#E5E7EB] rounded-t" style="height: 55%;"></div>
+                  <span class="text-[10px] font-medium text-[#767370] uppercase">Enterprise Value</span>
+                </div>
+
+                <div class="flex flex-col items-center gap-2 w-20 group">
+                  <div class="text-xs font-mono text-[#5C5A56] mb-1 text-[#F59E0B]">+$1.4M</div>
+                  <div class="w-full bg-[#FCD34D] rounded-t" style="height: 28%;"></div>
+                  <span class="text-[10px] font-medium text-[#767370] uppercase">Working Capital</span>
+                </div>
+
+                <div class="flex flex-col items-center gap-2 w-20 group">
+                  <div class="text-xs font-mono text-[#5C5A56] mb-1">-$8.0M</div>
+                  <div class="w-full bg-[#FECACA] rounded-t" style="height: 40%;"></div>
+                  <span class="text-[10px] font-medium text-[#767370] uppercase">Tax Drag</span>
+                </div>
+
+                <div class="flex flex-col items-center gap-2 w-20">
+                  <div class="text-xs font-mono text-[#1C1B1A] font-bold mb-1">$23.4M</div>
+                  <div class="w-full bg-[#1C1B1A] rounded-t" style="height: 80%;"></div>
+                  <span class="text-[10px] font-medium text-[#1C1B1A] uppercase">Net Liquidity</span>
+                </div>
+              </div>
+
+              <div class="mt-4 flex justify-between items-center text-xs text-[#767370]">
+                <div class="flex gap-4">
+                  <span class="flex items-center gap-1.5"><div class="w-2 h-2 rounded-full bg-[#F59E0B]"></div> Driver Impact</span>
+                  <span class="flex items-center gap-1.5"><div class="w-2 h-2 rounded-full bg-[#E5E7EB]"></div> Baseline</span>
+                </div>
+                <div class="font-mono">Sensitivity: <span class="text-[#1C1B1A]">High</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

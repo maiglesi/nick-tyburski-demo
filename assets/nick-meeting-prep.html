@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nick Tyburski - Meeting Preparation</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    :root {
+      --bg-page: #FAFAF8;
+      --bg-surface: #FFFFFF;
+      --border: #EAEAEA;
+      --text-primary: #1C1B1A;
+      --text-secondary: #5C5A56;
+      --shadow-float: 0 20px 40px -10px rgba(0,0,0,0.12);
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      padding: 32px;
+      background: var(--bg-page);
+      color: var(--text-primary);
+      font-family: "Inter", sans-serif;
+    }
+
+    .page {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <div class="w-full h-full flex items-center justify-center p-6 bg-[var(--bg-page)]">
+      <div class="w-[900px] h-[640px] bg-white rounded-lg border border-[#EAEAEA] flex flex-col overflow-hidden" style="box-shadow: var(--shadow-float);">
+        <div class="h-12 border-b border-[#EAEAEA] bg-[#FAFAFA] px-5 flex items-center justify-between shrink-0">
+          <div class="flex items-center gap-2">
+            <span class="text-gray-400">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="4" width="18" height="18" rx="2"></rect>
+                <line x1="16" y1="2" x2="16" y2="6"></line>
+                <line x1="8" y1="2" x2="8" y2="6"></line>
+                <line x1="3" y1="10" x2="21" y2="10"></line>
+              </svg>
+            </span>
+            <span class="font-semibold text-sm text-gray-800">Meeting Prep: Exit Readiness Strategy Session</span>
+            <span class="px-2 py-0.5 rounded text-[10px] font-mono uppercase bg-amber-50 text-amber-700 tracking-wide border border-amber-100">In Progress</span>
+          </div>
+          <div class="flex gap-2">
+            <div class="w-2.5 h-2.5 rounded-full bg-gray-200 hover:bg-yellow-400 cursor-pointer transition-colors"></div>
+            <div class="w-2.5 h-2.5 rounded-full bg-gray-200 hover:bg-green-400 cursor-pointer transition-colors"></div>
+            <div class="w-2.5 h-2.5 rounded-full bg-gray-200 hover:bg-red-400 cursor-pointer transition-colors"></div>
+          </div>
+        </div>
+
+        <div class="flex-1 flex overflow-hidden">
+          <div class="w-64 border-r border-[#EAEAEA] bg-[#FAFAFA]/30 p-5 flex flex-col gap-6 shrink-0 overflow-y-auto">
+            <div>
+              <div class="flex justify-between items-end mb-2">
+                <span class="text-xs font-medium text-gray-500 uppercase tracking-wider">Readiness</span>
+                <span class="text-lg font-bold text-blue-600 font-mono">86%</span>
+              </div>
+              <div class="h-1.5 w-full bg-gray-100 rounded-full overflow-hidden">
+                <div class="h-full bg-blue-600 rounded-full" style="width: 86%;"></div>
+              </div>
+              <p class="text-[11px] text-gray-400 mt-2">2 critical items pending review.</p>
+            </div>
+
+            <div class="space-y-4">
+              <div class="flex gap-3">
+                <div class="mt-0.5 text-gray-400">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <polyline points="12 6 12 12 16 14"></polyline>
+                  </svg>
+                </div>
+                <div>
+                  <div class="text-xs font-semibold text-gray-700">Time</div>
+                  <div class="text-xs text-gray-500 leading-relaxed">Thursday, Jan 16, 2026<br/>09:30 AM - 11:00 AM</div>
+                </div>
+              </div>
+              <div class="flex gap-3">
+                <div class="mt-0.5 text-gray-400">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                    <circle cx="9" cy="7" r="4"></circle>
+                    <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                    <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                  </svg>
+                </div>
+                <div>
+                  <div class="text-xs font-semibold text-gray-700">Attendees (5)</div>
+                  <div class="flex -space-x-2 mt-2">
+                    <div class="w-7 h-7 rounded-full bg-white border-2 border-[#EAEAEA] flex items-center justify-center text-[9px] font-bold text-gray-600">NT</div>
+                    <div class="w-7 h-7 rounded-full bg-white border-2 border-[#EAEAEA] flex items-center justify-center text-[9px] font-bold text-gray-600">LF</div>
+                    <div class="w-7 h-7 rounded-full bg-white border-2 border-[#EAEAEA] flex items-center justify-center text-[9px] font-bold text-gray-600">CO</div>
+                    <div class="w-7 h-7 rounded-full bg-white border-2 border-[#EAEAEA] flex items-center justify-center text-[9px] font-bold text-gray-600">EP</div>
+                    <div class="w-7 h-7 rounded-full bg-white border-2 border-[#EAEAEA] flex items-center justify-center text-[9px] font-bold text-gray-600">TX</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="mt-auto pt-6 border-t border-[#EAEAEA]">
+              <button class="w-full py-2 px-3 bg-white border border-[#EAEAEA] rounded text-xs font-medium text-gray-700 hover:bg-[#FAFAFA] flex items-center justify-center gap-2 mb-2 transition-colors">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                  <polyline points="7 10 12 15 17 10"></polyline>
+                  <line x1="12" y1="15" x2="12" y2="3"></line>
+                </svg>
+                Briefing Pack
+              </button>
+              <button class="w-full py-2 px-3 bg-blue-600 rounded text-xs font-medium text-white hover:bg-blue-700 flex items-center justify-center gap-2 transition-colors">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                  <polyline points="17 8 12 3 7 8"></polyline>
+                  <line x1="12" y1="3" x2="12" y2="15"></line>
+                </svg>
+                Add Material
+              </button>
+            </div>
+          </div>
+
+          <div class="flex-1 flex flex-col bg-white overflow-hidden">
+            <div class="flex border-b border-[#EAEAEA] px-6">
+              <button class="px-4 py-3 text-sm font-medium border-b-2 transition-colors border-blue-600 text-blue-600">Briefing</button>
+              <button class="px-4 py-3 text-sm font-medium border-b-2 transition-colors border-transparent text-gray-500 hover:text-gray-700">Agenda</button>
+              <button class="px-4 py-3 text-sm font-medium border-b-2 transition-colors border-transparent text-gray-500 hover:text-gray-700">Materials</button>
+              <button class="px-4 py-3 text-sm font-medium border-b-2 transition-colors border-transparent text-gray-500 hover:text-gray-700">Action Items</button>
+            </div>
+
+            <div class="flex-1 overflow-y-auto p-6">
+              <div class="space-y-6">
+                <div class="p-4 bg-amber-50 border border-amber-100 rounded-md flex gap-3 items-start">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#B45309" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="shrink-0 mt-0.5">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <line x1="12" y1="8" x2="12" y2="12"></line>
+                    <line x1="12" y1="16" x2="12.01" y2="16"></line>
+                  </svg>
+                  <div>
+                    <h4 class="text-sm font-semibold text-amber-800">Legacy planning draft pending</h4>
+                    <p class="text-xs text-amber-700 mt-1">Estate planning brief needs final review before the meeting.</p>
+                  </div>
+                </div>
+
+                <div>
+                  <h3 class="text-sm font-semibold text-gray-800 mb-3 flex items-center gap-2">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#22C55E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M20 6L9 17l-5-5"></path>
+                    </svg>
+                    Ready for Review
+                  </h3>
+                  <div class="grid grid-cols-2 gap-4">
+                    <div class="p-3 border border-[#EAEAEA] rounded-md hover:border-blue-200 hover:shadow-sm transition-all cursor-pointer group">
+                      <div class="flex justify-between items-start">
+                        <div class="flex gap-2">
+                          <div class="p-1.5 bg-red-50 text-red-600 rounded text-xs font-bold">PDF</div>
+                          <div>
+                            <div class="text-xs font-medium text-[#1C1B1A] group-hover:text-blue-600">Exit_Readiness_Scorecard.pdf</div>
+                            <div class="text-[10px] text-gray-500 mt-0.5">1.8 MB - Updated 30m ago</div>
+                          </div>
+                        </div>
+                        <span class="text-gray-400">...</span>
+                      </div>
+                    </div>
+                    <div class="p-3 border border-[#EAEAEA] rounded-md hover:border-blue-200 hover:shadow-sm transition-all cursor-pointer group">
+                      <div class="flex justify-between items-start">
+                        <div class="flex gap-2">
+                          <div class="p-1.5 bg-blue-50 text-blue-600 rounded text-xs font-bold">XLSX</div>
+                          <div>
+                            <div class="text-xs font-medium text-[#1C1B1A] group-hover:text-blue-600">Liquidity_Event_Forecast.xlsx</div>
+                            <div class="text-[10px] text-gray-500 mt-0.5">2.2 MB - Updated 45m ago</div>
+                          </div>
+                        </div>
+                        <span class="text-gray-400">...</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div>
+                  <h3 class="text-sm font-semibold text-gray-800 mb-3 flex items-center gap-2">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#3B82F6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <circle cx="12" cy="12" r="10"></circle>
+                      <polyline points="12 6 12 12 16 14"></polyline>
+                    </svg>
+                    Recent Activity
+                  </h3>
+                  <div class="relative pl-4 space-y-4 border-l border-[#EAEAEA]">
+                    <div class="relative">
+                      <div class="absolute -left-[21px] top-1.5 w-2.5 h-2.5 rounded-full bg-gray-200 border-2 border-white"></div>
+                      <div class="text-xs text-gray-600">Tax agent updated decumulation scenarios</div>
+                      <div class="text-[10px] text-gray-400">20 mins ago</div>
+                    </div>
+                    <div class="relative">
+                      <div class="absolute -left-[21px] top-1.5 w-2.5 h-2.5 rounded-full bg-gray-200 border-2 border-white"></div>
+                      <div class="text-xs text-gray-600">Vendor community exposure notes added</div>
+                      <div class="text-[10px] text-gray-400">1 hour ago</div>
+                    </div>
+                    <div class="relative">
+                      <div class="absolute -left-[21px] top-1.5 w-2.5 h-2.5 rounded-full bg-gray-200 border-2 border-white"></div>
+                      <div class="text-xs text-gray-600">Fiduciary portfolio summary finalized</div>
+                      <div class="text-[10px] text-gray-400">3 hours ago</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

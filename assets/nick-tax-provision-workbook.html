@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nick Tyburski - Tax Provision Workbook</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    :root {
+      --bg-page: #FAFAF8;
+      --bg-surface: #FFFFFF;
+      --border: #EAEAEA;
+      --text-primary: #1C1B1A;
+      --text-secondary: #5C5A56;
+      --shadow-float: 0 20px 40px -10px rgba(0,0,0,0.12);
+      --font-mono: "JetBrains Mono", monospace;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      padding: 32px;
+      background: var(--bg-page);
+      color: var(--text-primary);
+      font-family: "Inter", sans-serif;
+    }
+
+    .page {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <div class="flex flex-col w-full h-full bg-white border rounded shadow-sm" style="border-color: var(--border); box-shadow: var(--shadow-float);">
+      <div class="flex items-center justify-between px-5 py-3 border-b bg-gray-50/50" style="border-color: var(--border); height: 48px;">
+        <div class="flex items-center gap-3">
+          <div class="flex items-center justify-center w-6 h-6 rounded text-amber-600 bg-amber-50">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect width="16" height="20" x="4" y="2" rx="2"/>
+              <line x1="8" x2="16" y1="6" y2="6"/>
+              <line x1="16" x2="16" y1="14" y2="18"/>
+              <path d="M16 10h.01"/>
+              <path d="M12 10h.01"/>
+              <path d="M8 10h.01"/>
+              <path d="M12 14h.01"/>
+              <path d="M8 14h.01"/>
+              <path d="M12 18h.01"/>
+              <path d="M8 18h.01"/>
+            </svg>
+          </div>
+          <span class="text-sm font-semibold text-gray-900">Tax Provision Workbook - Tax-Efficient Decumulation</span>
+          <span class="px-1.5 py-0.5 text-[10px] font-medium tracking-wide text-amber-700 uppercase bg-amber-100 rounded">Draft</span>
+        </div>
+        <div class="flex gap-1.5">
+          <div class="w-2.5 h-2.5 rounded-full bg-gray-200"></div>
+          <div class="w-2.5 h-2.5 rounded-full bg-gray-200"></div>
+        </div>
+      </div>
+
+      <div class="flex flex-col flex-1 overflow-hidden">
+        <div class="flex items-center gap-6 px-6 py-4 border-b bg-white" style="border-color: var(--border);">
+          <div>
+            <div class="text-xs font-medium text-gray-500 uppercase tracking-wider">Effective Tax Rate</div>
+            <div class="text-2xl font-bold text-gray-900 font-mono mt-1">24.2%</div>
+          </div>
+          <div class="h-8 w-px bg-gray-200"></div>
+          <div>
+            <div class="text-xs font-medium text-gray-500 uppercase tracking-wider">Total Provision</div>
+            <div class="text-xl font-bold text-amber-600 font-mono mt-1">$3,791,750</div>
+          </div>
+          <div class="flex-1"></div>
+          <div class="text-xs text-right text-gray-400">
+            Liquidity event modeling - FY 2025 estimate<br/>Updated by Tax Agent
+          </div>
+        </div>
+
+        <div class="flex-1 overflow-auto p-0">
+          <table class="w-full text-sm text-left border-collapse">
+            <thead class="bg-gray-50 sticky top-0 z-10 text-xs uppercase text-gray-500 font-medium">
+              <tr>
+                <th class="px-6 py-3 border-b font-mono">Line Item</th>
+                <th class="px-6 py-3 border-b text-right font-mono">Book Amount</th>
+                <th class="px-6 py-3 border-b text-right font-mono">Adj.</th>
+                <th class="px-6 py-3 border-b text-right font-mono text-gray-900">Tax Basis / Final</th>
+                <th class="px-6 py-3 border-b text-center font-mono">Ref</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-gray-100">
+              <tr class="hover:bg-gray-50">
+                <td class="px-6 py-3">
+                  <div class="flex items-center gap-2">
+                    <span class="text-gray-700">Pretax Book Income (GAAP)</span>
+                  </div>
+                </td>
+                <td class="px-6 py-3 text-right font-mono text-gray-500">$12,500,000</td>
+                <td class="px-6 py-3 text-right font-mono text-gray-500">0</td>
+                <td class="px-6 py-3 text-right font-mono text-gray-900">12,500,000</td>
+                <td class="px-6 py-3 text-center"><span class="text-xs font-mono text-blue-500 bg-blue-50 px-1.5 py-0.5 rounded">TB-125</span></td>
+              </tr>
+
+              <tr class="hover:bg-gray-50">
+                <td class="px-6 py-3">
+                  <div class="flex items-center gap-2">
+                    <span class="text-gray-700">Liquidity Event Capital Gains</span>
+                  </div>
+                </td>
+                <td class="px-6 py-3 text-right font-mono text-gray-500">$4,200,000</td>
+                <td class="px-6 py-3 text-right font-mono text-gray-500">0</td>
+                <td class="px-6 py-3 text-right font-mono text-gray-900">4,200,000</td>
+                <td class="px-6 py-3 text-center"><span class="text-xs font-mono text-blue-500 bg-blue-50 px-1.5 py-0.5 rounded">LE-02</span></td>
+              </tr>
+
+              <tr class="hover:bg-gray-50">
+                <td class="px-6 py-3">
+                  <div class="flex items-center gap-2">
+                    <span class="text-gray-700">Meals & Entertainment (50% Disallowance)</span>
+                  </div>
+                </td>
+                <td class="px-6 py-3 text-right font-mono text-gray-500">$120,000</td>
+                <td class="px-6 py-3 text-right font-mono text-gray-600">60,000</td>
+                <td class="px-6 py-3 text-right font-mono text-gray-900">60,000</td>
+                <td class="px-6 py-3 text-center"><span class="text-xs font-mono text-blue-500 bg-blue-50 px-1.5 py-0.5 rounded">WP-P1</span></td>
+              </tr>
+
+              <tr class="hover:bg-gray-50">
+                <td class="px-6 py-3">
+                  <div class="flex items-center gap-2">
+                    <span class="text-gray-700">Fines and Penalties</span>
+                  </div>
+                </td>
+                <td class="px-6 py-3 text-right font-mono text-gray-500">$15,000</td>
+                <td class="px-6 py-3 text-right font-mono text-gray-500">0</td>
+                <td class="px-6 py-3 text-right font-mono text-gray-900">15,000</td>
+                <td class="px-6 py-3 text-center"><span class="text-xs font-mono text-blue-500 bg-blue-50 px-1.5 py-0.5 rounded">WP-P2</span></td>
+              </tr>
+
+              <tr class="hover:bg-gray-50">
+                <td class="px-6 py-3">
+                  <div class="flex items-center gap-2">
+                    <span class="text-gray-700">Stock Based Compensation (Windfall)</span>
+                  </div>
+                </td>
+                <td class="px-6 py-3 text-right font-mono text-gray-500">($500,000)</td>
+                <td class="px-6 py-3 text-right font-mono text-gray-500">0</td>
+                <td class="px-6 py-3 text-right font-mono text-gray-900">(500,000)</td>
+                <td class="px-6 py-3 text-center"><span class="text-xs font-mono text-blue-500 bg-blue-50 px-1.5 py-0.5 rounded">WP-P3</span></td>
+              </tr>
+
+              <tr class="hover:bg-gray-50">
+                <td class="px-6 py-3">
+                  <div class="flex items-center gap-2">
+                    <span class="text-gray-700">Depreciation (MACRS vs GAAP)</span>
+                  </div>
+                </td>
+                <td class="px-6 py-3 text-right font-mono text-gray-500">0</td>
+                <td class="px-6 py-3 text-right font-mono text-red-500">(850,000)</td>
+                <td class="px-6 py-3 text-right font-mono text-gray-900">(850,000)</td>
+                <td class="px-6 py-3 text-center"><span class="text-xs font-mono text-blue-500 bg-blue-50 px-1.5 py-0.5 rounded">WP-T1</span></td>
+              </tr>
+
+              <tr class="hover:bg-gray-50">
+                <td class="px-6 py-3">
+                  <div class="flex items-center gap-2">
+                    <span class="text-gray-700">Allowance for Doubtful Accounts</span>
+                  </div>
+                </td>
+                <td class="px-6 py-3 text-right font-mono text-gray-500">$50,000</td>
+                <td class="px-6 py-3 text-right font-mono text-gray-500">0</td>
+                <td class="px-6 py-3 text-right font-mono text-gray-900">50,000</td>
+                <td class="px-6 py-3 text-center"><span class="text-xs font-mono text-blue-500 bg-blue-50 px-1.5 py-0.5 rounded">WP-T2</span></td>
+              </tr>
+
+              <tr class="hover:bg-gray-50">
+                <td class="px-6 py-3">
+                  <div class="flex items-center gap-2">
+                    <span class="text-gray-700">Deferred Revenue</span>
+                  </div>
+                </td>
+                <td class="px-6 py-3 text-right font-mono text-gray-500">$200,000</td>
+                <td class="px-6 py-3 text-right font-mono text-gray-500">0</td>
+                <td class="px-6 py-3 text-right font-mono text-gray-900">200,000</td>
+                <td class="px-6 py-3 text-center"><span class="text-xs font-mono text-blue-500 bg-blue-50 px-1.5 py-0.5 rounded">WP-T3</span></td>
+              </tr>
+
+              <tr class="bg-amber-50/30 font-semibold">
+                <td class="px-6 py-3">
+                  <div class="flex items-center gap-2">
+                    <span class="text-amber-500">SUM</span>
+                    <span class="text-gray-900">Taxable Income (Federal)</span>
+                  </div>
+                </td>
+                <td class="px-6 py-3 text-right font-mono text-gray-500">-</td>
+                <td class="px-6 py-3 text-right font-mono text-gray-500">-</td>
+                <td class="px-6 py-3 text-right font-mono text-amber-700 font-bold">15,675,000</td>
+                <td class="px-6 py-3 text-center"><span class="text-xs font-mono text-blue-500 bg-blue-50 px-1.5 py-0.5 rounded">CALC</span></td>
+              </tr>
+
+              <tr class="hover:bg-gray-50">
+                <td class="px-6 py-3">
+                  <div class="flex items-center gap-2">
+                    <span class="text-gray-700">Federal Tax @ 21%</span>
+                  </div>
+                </td>
+                <td class="px-6 py-3 text-right font-mono text-gray-500">-</td>
+                <td class="px-6 py-3 text-right font-mono text-gray-500">-</td>
+                <td class="px-6 py-3 text-right font-mono text-gray-900">3,291,750</td>
+                <td class="px-6 py-3 text-center"><span class="text-xs font-mono text-blue-500 bg-blue-50 px-1.5 py-0.5 rounded">RATE-21</span></td>
+              </tr>
+
+              <tr class="hover:bg-gray-50">
+                <td class="px-6 py-3">
+                  <div class="flex items-center gap-2">
+                    <span class="text-gray-700">State Tax (Net of Fed Benefit)</span>
+                  </div>
+                </td>
+                <td class="px-6 py-3 text-right font-mono text-gray-500">-</td>
+                <td class="px-6 py-3 text-right font-mono text-gray-600">650,000</td>
+                <td class="px-6 py-3 text-right font-mono text-gray-900">650,000</td>
+                <td class="px-6 py-3 text-center"><span class="text-xs font-mono text-blue-500 bg-blue-50 px-1.5 py-0.5 rounded">WP-S1</span></td>
+              </tr>
+
+              <tr class="hover:bg-gray-50">
+                <td class="px-6 py-3">
+                  <div class="flex items-center gap-2">
+                    <span class="text-gray-700">R&D Tax Credit</span>
+                  </div>
+                </td>
+                <td class="px-6 py-3 text-right font-mono text-gray-500">-</td>
+                <td class="px-6 py-3 text-right font-mono text-red-500">(150,000)</td>
+                <td class="px-6 py-3 text-right font-mono text-gray-900">(150,000)</td>
+                <td class="px-6 py-3 text-center"><span class="text-xs font-mono text-blue-500 bg-blue-50 px-1.5 py-0.5 rounded">FORM-6765</span></td>
+              </tr>
+
+              <tr class="bg-amber-50/30 font-semibold">
+                <td class="px-6 py-3">
+                  <div class="flex items-center gap-2">
+                    <span class="text-amber-500">SUM</span>
+                    <span class="text-gray-900">Total Tax Provision</span>
+                  </div>
+                </td>
+                <td class="px-6 py-3 text-right font-mono text-gray-500">-</td>
+                <td class="px-6 py-3 text-right font-mono text-gray-500">-</td>
+                <td class="px-6 py-3 text-right font-mono text-amber-700 font-bold">3,791,750</td>
+                <td class="px-6 py-3 text-center"><span class="text-xs font-mono text-blue-500 bg-blue-50 px-1.5 py-0.5 rounded">SUM</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="px-6 py-3 border-t bg-gray-50/50 flex items-center justify-between text-xs text-gray-500" style="border-color: var(--border);">
+          <div class="flex items-center gap-2">
+            <div class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></div>
+            <span>Reconciling liquidity event entries with trial balance</span>
+          </div>
+          <div class="font-mono">ASC 740 Compliant</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

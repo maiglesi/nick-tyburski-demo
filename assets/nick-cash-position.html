@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nick Tyburski - Cash Position Dashboard</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    :root {
+      --bg-page: #FAFAF8;
+      --bg-surface: #FFFFFF;
+      --border: #EAEAEA;
+      --text-primary: #1C1B1A;
+      --text-secondary: #5C5A56;
+      --shadow-float: 0 20px 40px -10px rgba(0,0,0,0.12);
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      padding: 32px;
+      background: var(--bg-page);
+      color: var(--text-primary);
+      font-family: "Inter", sans-serif;
+    }
+
+    .page {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <div class="w-[860px] flex flex-col rounded shadow-md overflow-hidden font-sans" style="background: var(--bg-surface); border: 1px solid var(--border); box-shadow: var(--shadow-float);">
+      <div class="h-12 flex items-center justify-between px-5 border-b" style="background: #FAFAFA; border-color: var(--border);">
+        <div class="flex items-center gap-2">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1C1B1A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="12" y1="2" x2="12" y2="22"></line>
+            <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7H14.5a3.5 3.5 0 0 1 0 7H6"></path>
+          </svg>
+          <h3 class="text-sm font-semibold text-[var(--text-primary)]">Cash Position & Liquidity</h3>
+          <span class="px-1.5 py-0.5 rounded text-[10px] font-mono font-medium uppercase tracking-wider" style="background: #FEF3C7; color: #B45309;">Realtime</span>
+        </div>
+        <div class="flex gap-2">
+          <div class="w-2.5 h-2.5 rounded-full bg-gray-200"></div>
+          <div class="w-2.5 h-2.5 rounded-full bg-gray-200"></div>
+        </div>
+      </div>
+
+      <div class="p-6 flex flex-col gap-6 overflow-y-auto max-h-[600px]">
+        <div class="grid grid-cols-3 gap-4">
+          <div class="p-4 rounded border border-[var(--border,#EAEAEA)] bg-[var(--bg-page,#FAFAF8)]">
+            <div class="text-xs font-medium text-[var(--text-secondary,#5C5A56)] uppercase tracking-wide mb-1">Total Liquidity</div>
+            <div class="text-2xl font-bold font-mono tracking-tight" style="color: #F59E0B;">$6.8M</div>
+            <div class="mt-2 text-xs text-[var(--text-secondary,#5C5A56)] flex items-center gap-1">
+              <span class="text-green-600 font-medium">up 2.4%</span> vs last week
+            </div>
+          </div>
+          <div class="p-4 rounded border border-[var(--border,#EAEAEA)] bg-white">
+            <div class="text-xs font-medium text-[var(--text-secondary,#5C5A56)] uppercase tracking-wide mb-1">Operating Cash</div>
+            <div class="text-xl font-semibold text-[var(--text-primary,#1C1B1A)]">$1.9M</div>
+            <div class="mt-2 text-xs text-[var(--text-secondary,#5C5A56)]">Checking & Payroll</div>
+          </div>
+          <div class="p-4 rounded border border-[var(--border,#EAEAEA)] bg-white">
+            <div class="text-xs font-medium text-[var(--text-secondary,#5C5A56)] uppercase tracking-wide mb-1">Invested / Yield</div>
+            <div class="text-xl font-semibold text-[var(--text-primary,#1C1B1A)]">$4.9M</div>
+            <div class="mt-2 text-xs text-[var(--text-secondary,#5C5A56)]">MM & Savings</div>
+          </div>
+        </div>
+
+        <div class="rounded border p-3 flex items-start gap-3" style="background: #FFFBEB; border-color: #FCD34D;">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#92400E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+          </svg>
+          <div class="flex-1">
+            <h4 class="text-sm font-semibold" style="color: #92400E;">Liquidity Event Opportunity</h4>
+            <p class="text-xs text-amber-800 mt-1">
+              We identified <strong>$950k</strong> in excess operating cash. Sweeping to the money market sleeve ahead of the liquidity event adds an estimated <strong>+$3,200/mo</strong> in yield.
+            </p>
+          </div>
+          <button class="px-3 py-1.5 rounded text-xs font-medium text-white transition-opacity hover:opacity-90" style="background: #F59E0B;">Review Sweep</button>
+        </div>
+
+        <div class="flex flex-col gap-3">
+          <div class="flex items-center justify-between">
+            <h4 class="text-sm font-semibold text-[var(--text-primary,#1C1B1A)]">Bank Accounts</h4>
+            <div class="flex gap-2">
+              <button class="text-xs font-medium text-[var(--text-secondary,#5C5A56)] hover:text-[var(--text-primary,#1C1B1A)]">Sort by Balance</button>
+            </div>
+          </div>
+
+          <div class="border rounded border-[var(--border,#EAEAEA)] overflow-hidden">
+            <table class="w-full text-sm text-left">
+              <thead class="bg-gray-50 text-[var(--text-secondary,#5C5A56)] font-medium text-xs uppercase tracking-wider">
+                <tr>
+                  <th class="px-4 py-3">Account</th>
+                  <th class="px-4 py-3">Bank</th>
+                  <th class="px-4 py-3 text-right">Balance</th>
+                  <th class="px-4 py-3 text-right">Sweep Target</th>
+                  <th class="px-4 py-3 text-right">Status</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-[var(--border,#EAEAEA)]">
+                <tr class="hover:bg-gray-50">
+                  <td class="px-4 py-3">Operating Account</td>
+                  <td class="px-4 py-3 text-xs text-gray-500">Chase **** 4492</td>
+                  <td class="px-4 py-3 text-right font-mono">$1,250,000</td>
+                  <td class="px-4 py-3 text-right text-xs text-gray-500">$500,000</td>
+                  <td class="px-4 py-3 text-right"><span class="text-[10px] font-mono bg-amber-50 text-amber-700 px-2 py-0.5 rounded">Excess</span></td>
+                </tr>
+                <tr class="hover:bg-gray-50">
+                  <td class="px-4 py-3">Tax Reserve</td>
+                  <td class="px-4 py-3 text-xs text-gray-500">LPL **** 1120</td>
+                  <td class="px-4 py-3 text-right font-mono">$650,000</td>
+                  <td class="px-4 py-3 text-right text-xs text-gray-500">$400,000</td>
+                  <td class="px-4 py-3 text-right"><span class="text-[10px] font-mono bg-amber-50 text-amber-700 px-2 py-0.5 rounded">Excess</span></td>
+                </tr>
+                <tr class="hover:bg-gray-50">
+                  <td class="px-4 py-3">Money Market</td>
+                  <td class="px-4 py-3 text-xs text-gray-500">LPL **** 9910</td>
+                  <td class="px-4 py-3 text-right font-mono">$4,500,000</td>
+                  <td class="px-4 py-3 text-right text-xs text-gray-500">-</td>
+                  <td class="px-4 py-3 text-right"><span class="text-[10px] font-mono bg-emerald-50 text-emerald-700 px-2 py-0.5 rounded">Invested</span></td>
+                </tr>
+                <tr class="hover:bg-gray-50">
+                  <td class="px-4 py-3">High Yield Savings</td>
+                  <td class="px-4 py-3 text-xs text-gray-500">Citi **** 3321</td>
+                  <td class="px-4 py-3 text-right font-mono">$800,000</td>
+                  <td class="px-4 py-3 text-right text-xs text-gray-500">$200,000</td>
+                  <td class="px-4 py-3 text-right"><span class="text-[10px] font-mono bg-amber-50 text-amber-700 px-2 py-0.5 rounded">Excess</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nick Tyburski - Task Priority Board</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    :root {
+      --bg-page: #FAFAF8;
+      --bg-surface: #FFFFFF;
+      --border: #EAEAEA;
+      --text-primary: #1C1B1A;
+      --text-secondary: #5C5A56;
+      --text-muted: #767370;
+      --shadow-float: 0 20px 40px -10px rgba(0,0,0,0.12);
+      --font-mono: "JetBrains Mono", monospace;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      padding: 32px;
+      background: var(--bg-page);
+      color: var(--text-primary);
+      font-family: "Inter", sans-serif;
+    }
+
+    .page {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .scrollbar-thin::-webkit-scrollbar {
+      width: 6px;
+    }
+    .scrollbar-thin::-webkit-scrollbar-thumb {
+      background: #D1D5DB;
+      border-radius: 999px;
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <div class="flex flex-col h-full bg-[var(--bg-surface)] text-[var(--text-primary)] rounded-lg border border-[var(--border)] shadow-sm overflow-hidden font-sans" style="box-shadow: var(--shadow-float);">
+      <div class="h-12 border-b border-[var(--border)] bg-[#FAFAFA] flex items-center justify-between px-4 shrink-0">
+        <div class="flex items-center gap-3">
+          <div class="w-8 h-8 rounded bg-indigo-50 flex items-center justify-center text-indigo-600">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M9 11l3 3L22 4"></path>
+              <path d="M22 12v7a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path>
+            </svg>
+          </div>
+          <div>
+            <h2 class="text-[14px] font-semibold text-[var(--text-primary)]">Task Priority Board</h2>
+            <div class="flex items-center gap-2">
+              <span class="text-[10px] text-[var(--text-secondary)] font-mono">EXIT-READINESS-OPS</span>
+              <span class="text-[9px] px-1.5 py-0.5 rounded bg-green-100 text-green-700 font-bold tracking-wider uppercase">Live</span>
+            </div>
+          </div>
+        </div>
+        <div class="flex items-center gap-3">
+          <div class="flex items-center bg-[var(--bg-surface)] border border-[var(--border)] rounded px-2 py-1 gap-2">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-[var(--text-muted)]">
+              <circle cx="11" cy="11" r="8"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+            <input type="text" placeholder="Filter tasks..." class="bg-transparent border-none outline-none text-[12px] w-32 placeholder:text-gray-400" />
+          </div>
+          <div class="flex gap-1 bg-[var(--bg-surface)] p-0.5 rounded border border-[var(--border)]">
+            <button class="p-1 rounded bg-indigo-50 text-indigo-600">
+              <div class="w-3 h-3 flex gap-0.5">
+                <div class="w-1 h-3 bg-current rounded-[1px]"></div>
+                <div class="w-1 h-3 bg-current rounded-[1px]"></div>
+                <div class="w-1 h-3 bg-current rounded-[1px]"></div>
+              </div>
+            </button>
+            <button class="p-1 rounded text-[var(--text-muted)]">
+              <div class="w-3 h-3 flex flex-col gap-0.5">
+                <div class="h-1 w-3 bg-current rounded-[1px]"></div>
+                <div class="h-1 w-3 bg-current rounded-[1px]"></div>
+                <div class="h-1 w-3 bg-current rounded-[1px]"></div>
+              </div>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="flex-1 overflow-hidden p-4">
+        <div class="flex gap-6 overflow-x-auto h-full">
+          <div class="flex flex-col min-w-[260px] max-w-[260px] h-full">
+            <div class="flex items-center justify-between mb-3 px-1">
+              <div class="flex items-center gap-2">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-[var(--text-muted)]"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+                <h3 class="text-[13px] font-semibold text-[var(--text-secondary)] uppercase tracking-wide">Urgent</h3>
+                <span class="text-[11px] bg-[var(--bg-surface)] border border-[var(--border)] px-1.5 rounded text-[var(--text-muted)]">2</span>
+              </div>
+            </div>
+            <div class="flex-1 overflow-y-auto pr-2 pb-4 scrollbar-thin">
+              <div class="group bg-[var(--bg-surface)] p-4 rounded border border-[var(--border)] shadow-sm hover:shadow-[0_20px_40px_-10px_rgba(0,0,0,0.12)] transition-all cursor-pointer mb-3 relative overflow-hidden">
+                <div class="absolute left-0 top-0 bottom-0 w-1 bg-red-500"></div>
+                <div class="pl-2">
+                  <div class="flex justify-between items-start mb-2">
+                    <span class="text-[10px] font-mono uppercase tracking-wider px-2 py-0.5 rounded-full border bg-red-50 text-red-700 border-red-200">Urgent</span>
+                  </div>
+                  <h4 class="text-[13px] font-medium text-[var(--text-primary)] leading-snug mb-2">Finalize liquidity event tax model</h4>
+                  <div class="flex items-center gap-2 mb-3">
+                    <span class="text-[10px] px-1.5 py-0.5 rounded font-medium text-blue-600 bg-blue-50">In Progress</span>
+                    <span class="text-[10px] text-green-600 bg-green-50 px-1.5 py-0.5 rounded">Finance</span>
+                  </div>
+                  <div class="flex items-center justify-between pt-3 border-t border-[var(--border)] mt-2">
+                    <div class="flex items-center gap-2">
+                      <div class="w-5 h-5 rounded-full bg-gradient-to-br from-indigo-100 to-indigo-200 flex items-center justify-center text-[9px] font-bold text-indigo-700 border border-indigo-200">NT</div>
+                      <span class="text-[11px] text-[var(--text-secondary)] truncate max-w-[80px]">Nick Tyburski</span>
+                    </div>
+                    <div class="flex items-center gap-1 text-[var(--text-secondary)]">
+                      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+                      <span class="text-[10px] text-red-600 font-medium">Today</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="group bg-[var(--bg-surface)] p-4 rounded border border-[var(--border)] shadow-sm hover:shadow-[0_20px_40px_-10px_rgba(0,0,0,0.12)] transition-all cursor-pointer mb-3 relative overflow-hidden">
+                <div class="absolute left-0 top-0 bottom-0 w-1 bg-red-500"></div>
+                <div class="pl-2">
+                  <div class="flex justify-between items-start mb-2">
+                    <span class="text-[10px] font-mono uppercase tracking-wider px-2 py-0.5 rounded-full border bg-red-50 text-red-700 border-red-200">Urgent</span>
+                  </div>
+                  <h4 class="text-[13px] font-medium text-[var(--text-primary)] leading-snug mb-2">Confirm vendor community concentration mitigation</h4>
+                  <div class="flex items-center gap-2 mb-3">
+                    <span class="text-[10px] px-1.5 py-0.5 rounded font-medium text-amber-600 bg-amber-50">Review</span>
+                    <span class="text-[10px] text-green-600 bg-green-50 px-1.5 py-0.5 rounded">Risk</span>
+                  </div>
+                  <div class="flex items-center justify-between pt-3 border-t border-[var(--border)] mt-2">
+                    <div class="flex items-center gap-2">
+                      <div class="w-5 h-5 rounded-full bg-gradient-to-br from-indigo-100 to-indigo-200 flex items-center justify-center text-[9px] font-bold text-indigo-700 border border-indigo-200">RA</div>
+                      <span class="text-[11px] text-[var(--text-secondary)] truncate max-w-[80px]">Risk Agent</span>
+                    </div>
+                    <div class="flex items-center gap-1 text-[var(--text-secondary)]">
+                      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+                      <span class="text-[10px] text-red-600 font-medium">Today</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="flex flex-col min-w-[260px] max-w-[260px] h-full">
+            <div class="flex items-center justify-between mb-3 px-1">
+              <div class="flex items-center gap-2">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-[var(--text-muted)]"><circle cx="12" cy="12" r="10"></circle><path d="M12 6v6l4 2"></path></svg>
+                <h3 class="text-[13px] font-semibold text-[var(--text-secondary)] uppercase tracking-wide">High</h3>
+                <span class="text-[11px] bg-[var(--bg-surface)] border border-[var(--border)] px-1.5 rounded text-[var(--text-muted)]">2</span>
+              </div>
+            </div>
+            <div class="flex-1 overflow-y-auto pr-2 pb-4 scrollbar-thin">
+              <div class="group bg-[var(--bg-surface)] p-4 rounded border border-[var(--border)] shadow-sm hover:shadow-[0_20px_40px_-10px_rgba(0,0,0,0.12)] transition-all cursor-pointer mb-3 relative overflow-hidden">
+                <div class="absolute left-0 top-0 bottom-0 w-1 bg-orange-400"></div>
+                <div class="pl-2">
+                  <div class="flex justify-between items-start mb-2">
+                    <span class="text-[10px] font-mono uppercase tracking-wider px-2 py-0.5 rounded-full border bg-orange-50 text-orange-700 border-orange-200">High</span>
+                  </div>
+                  <h4 class="text-[13px] font-medium text-[var(--text-primary)] leading-snug mb-2">Update fiduciary investment policy statement</h4>
+                  <div class="flex items-center gap-2 mb-3">
+                    <span class="text-[10px] px-1.5 py-0.5 rounded font-medium text-gray-500 bg-gray-100">Pending</span>
+                    <span class="text-[10px] text-green-600 bg-green-50 px-1.5 py-0.5 rounded">Compliance</span>
+                  </div>
+                  <div class="flex items-center justify-between pt-3 border-t border-[var(--border)] mt-2">
+                    <div class="flex items-center gap-2">
+                      <div class="w-5 h-5 rounded-full bg-gradient-to-br from-indigo-100 to-indigo-200 flex items-center justify-center text-[9px] font-bold text-indigo-700 border border-indigo-200">CA</div>
+                      <span class="text-[11px] text-[var(--text-secondary)] truncate max-w-[80px]">Compliance</span>
+                    </div>
+                    <div class="flex items-center gap-1 text-[var(--text-secondary)]">
+                      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+                      <span class="text-[10px]">Jan 14</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="group bg-[var(--bg-surface)] p-4 rounded border border-[var(--border)] shadow-sm hover:shadow-[0_20px_40px_-10px_rgba(0,0,0,0.12)] transition-all cursor-pointer mb-3 relative overflow-hidden">
+                <div class="absolute left-0 top-0 bottom-0 w-1 bg-orange-400"></div>
+                <div class="pl-2">
+                  <div class="flex justify-between items-start mb-2">
+                    <span class="text-[10px] font-mono uppercase tracking-wider px-2 py-0.5 rounded-full border bg-orange-50 text-orange-700 border-orange-200">High</span>
+                  </div>
+                  <h4 class="text-[13px] font-medium text-[var(--text-primary)] leading-snug mb-2">Schedule exit readiness workshop</h4>
+                  <div class="flex items-center gap-2 mb-3">
+                    <span class="text-[10px] px-1.5 py-0.5 rounded font-medium text-blue-600 bg-blue-50">In Progress</span>
+                    <span class="text-[10px] text-purple-600 bg-purple-50 px-1.5 py-0.5 rounded">Admin</span>
+                  </div>
+                  <div class="flex items-center justify-between pt-3 border-t border-[var(--border)] mt-2">
+                    <div class="flex items-center gap-2">
+                      <div class="w-5 h-5 rounded-full bg-gradient-to-br from-indigo-100 to-indigo-200 flex items-center justify-center text-[9px] font-bold text-indigo-700 border border-indigo-200">EA</div>
+                      <span class="text-[11px] text-[var(--text-secondary)] truncate max-w-[80px]">Exec Admin</span>
+                    </div>
+                    <div class="flex items-center gap-1 text-[var(--text-secondary)]">
+                      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+                      <span class="text-[10px]">Jan 17</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="flex flex-col min-w-[260px] max-w-[260px] h-full">
+            <div class="flex items-center justify-between mb-3 px-1">
+              <div class="flex items-center gap-2">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-[var(--text-muted)]"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+                <h3 class="text-[13px] font-semibold text-[var(--text-secondary)] uppercase tracking-wide">Medium</h3>
+                <span class="text-[11px] bg-[var(--bg-surface)] border border-[var(--border)] px-1.5 rounded text-[var(--text-muted)]">1</span>
+              </div>
+            </div>
+            <div class="flex-1 overflow-y-auto pr-2 pb-4 scrollbar-thin">
+              <div class="group bg-[var(--bg-surface)] p-4 rounded border border-[var(--border)] shadow-sm hover:shadow-[0_20px_40px_-10px_rgba(0,0,0,0.12)] transition-all cursor-pointer mb-3 relative overflow-hidden">
+                <div class="absolute left-0 top-0 bottom-0 w-1 bg-blue-400"></div>
+                <div class="pl-2">
+                  <div class="flex justify-between items-start mb-2">
+                    <span class="text-[10px] font-mono uppercase tracking-wider px-2 py-0.5 rounded-full border bg-blue-50 text-blue-700 border-blue-200">Medium</span>
+                  </div>
+                  <h4 class="text-[13px] font-medium text-[var(--text-primary)] leading-snug mb-2">Legacy planning briefing draft</h4>
+                  <div class="flex items-center gap-2 mb-3">
+                    <span class="text-[10px] px-1.5 py-0.5 rounded font-medium text-gray-500 bg-gray-100">Pending</span>
+                    <span class="text-[10px] text-purple-600 bg-purple-50 px-1.5 py-0.5 rounded">Advisory</span>
+                  </div>
+                  <div class="flex items-center justify-between pt-3 border-t border-[var(--border)] mt-2">
+                    <div class="flex items-center gap-2">
+                      <div class="w-5 h-5 rounded-full bg-gradient-to-br from-indigo-100 to-indigo-200 flex items-center justify-center text-[9px] font-bold text-indigo-700 border border-indigo-200">LP</div>
+                      <span class="text-[11px] text-[var(--text-secondary)] truncate max-w-[80px]">Legacy Team</span>
+                    </div>
+                    <div class="flex items-center gap-1 text-[var(--text-secondary)]">
+                      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+                      <span class="text-[10px]">Jan 21</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="flex flex-col min-w-[260px] max-w-[260px] h-full">
+            <div class="flex items-center justify-between mb-3 px-1">
+              <div class="flex items-center gap-2">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-[var(--text-muted)]"><circle cx="12" cy="12" r="10"></circle><path d="M12 6v6l4 2"></path></svg>
+                <h3 class="text-[13px] font-semibold text-[var(--text-secondary)] uppercase tracking-wide">Low</h3>
+                <span class="text-[11px] bg-[var(--bg-surface)] border border-[var(--border)] px-1.5 rounded text-[var(--text-muted)]">1</span>
+              </div>
+            </div>
+            <div class="flex-1 overflow-y-auto pr-2 pb-4 scrollbar-thin">
+              <div class="group bg-[var(--bg-surface)] p-4 rounded border border-[var(--border)] shadow-sm hover:shadow-[0_20px_40px_-10px_rgba(0,0,0,0.12)] transition-all cursor-pointer mb-3 relative overflow-hidden">
+                <div class="absolute left-0 top-0 bottom-0 w-1 bg-gray-300"></div>
+                <div class="pl-2">
+                  <div class="flex justify-between items-start mb-2">
+                    <span class="text-[10px] font-mono uppercase tracking-wider px-2 py-0.5 rounded-full border bg-[#FAFAFA] text-gray-600 border-[#EAEAEA]">Low</span>
+                  </div>
+                  <h4 class="text-[13px] font-medium text-[var(--text-primary)] leading-snug mb-2">Archive prior board review notes</h4>
+                  <div class="flex items-center gap-2 mb-3">
+                    <span class="text-[10px] px-1.5 py-0.5 rounded font-medium text-emerald-600 bg-emerald-50">Done</span>
+                    <span class="text-[10px] text-gray-600 bg-gray-100 px-1.5 py-0.5 rounded">Admin</span>
+                  </div>
+                  <div class="flex items-center justify-between pt-3 border-t border-[var(--border)] mt-2">
+                    <div class="flex items-center gap-2">
+                      <div class="w-5 h-5 rounded-full bg-gradient-to-br from-indigo-100 to-indigo-200 flex items-center justify-center text-[9px] font-bold text-indigo-700 border border-indigo-200">EA</div>
+                      <span class="text-[11px] text-[var(--text-secondary)] truncate max-w-[80px]">Exec Admin</span>
+                    </div>
+                    <div class="flex items-center gap-1 text-[var(--text-secondary)]">
+                      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+                      <span class="text-[10px]">Jan 05</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

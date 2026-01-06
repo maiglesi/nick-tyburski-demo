@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nick Tyburski - Vendor Risk Assessment</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    :root {
+      --bg-page: #FAFAF8;
+      --bg-surface: #FFFFFF;
+      --border: #EAEAEA;
+      --text-primary: #1C1B1A;
+      --text-secondary: #5C5A56;
+      --shadow-float: 0 20px 40px -10px rgba(0,0,0,0.12);
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      padding: 32px;
+      background: var(--bg-page);
+      color: var(--text-primary);
+      font-family: "Inter", sans-serif;
+    }
+
+    .page {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <div class="artifact-card flex flex-col bg-[var(--bg-surface)] border border-[var(--border)] rounded-[4px] overflow-hidden" style="box-shadow: var(--shadow-float);">
+      <div class="artifact-header h-[48px] border-b border-[var(--border)] px-5 flex items-center justify-between bg-[#FAFAFA]">
+        <div class="flex items-center gap-2">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#1C1B1A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+          </svg>
+          <span class="text-[13px] font-medium text-[#1C1B1A]">Vendor Risk Assessment</span>
+          <span class="label px-1 py-0.5 rounded-[2px] font-mono text-[10px] uppercase tracking-wider bg-[#FEF3C7] text-[#854D0E]">PENDING APPROVAL</span>
+        </div>
+        <div class="flex gap-2">
+          <div class="w-[10px] h-[10px] rounded-full bg-[#E5E7EB]"></div>
+          <div class="w-[10px] h-[10px] rounded-full bg-[#E5E7EB]"></div>
+          <div class="w-[10px] h-[10px] rounded-full bg-[#E5E7EB]"></div>
+        </div>
+      </div>
+
+      <div class="artifact-content flex-1 p-8 overflow-y-auto relative font-sans text-[#1C1B1A]">
+        <div class="flex flex-col h-full overflow-hidden">
+          <div class="flex items-start justify-between p-4 mb-4 bg-[#FAFAF8] border border-[var(--border)] rounded-lg">
+            <div class="flex gap-4">
+              <div class="w-12 h-12 rounded bg-indigo-100 flex items-center justify-center text-indigo-700 font-bold text-xl border border-indigo-200">VC</div>
+              <div>
+                <h2 class="text-lg font-semibold text-[#1C1B1A]">NWA Vendor Community Concentration</h2>
+                <div class="flex items-center gap-2 text-xs text-gray-500 mt-1">
+                  <span class="px-1.5 py-0.5 bg-gray-100 rounded text-gray-600 border border-[#EAEAEA]">Tier 1 (Critical)</span>
+                  <span>|</span>
+                  <span>CPG Vendor Revenue</span>
+                  <span>|</span>
+                  <span>Owner: Nick Tyburski (CWM)</span>
+                </div>
+              </div>
+            </div>
+            <div class="flex items-center gap-6">
+              <div class="text-right">
+                <div class="text-[10px] uppercase font-bold text-gray-400">Last Assessment</div>
+                <div class="text-sm font-medium text-[#1C1B1A]">Jan 05, 2026</div>
+              </div>
+              <div class="h-8 w-px bg-gray-200"></div>
+              <div class="relative flex items-center justify-center w-24 h-24">
+                <svg class="w-full h-full transform -rotate-90">
+                  <circle cx="48" cy="48" r="36" stroke="currentColor" stroke-width="8" fill="transparent" class="text-gray-100"></circle>
+                  <circle cx="48" cy="48" r="36" stroke="currentColor" stroke-width="8" fill="transparent" stroke-dasharray="226.2" stroke-dashoffset="63.3" stroke-linecap="round" class="text-amber-500"></circle>
+                </svg>
+                <div class="absolute flex flex-col items-center">
+                  <span class="text-2xl font-bold text-[#1C1B1A]">72</span>
+                  <span class="text-[10px] uppercase text-gray-400 font-bold">Score</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="flex items-center gap-6 border-b border-[var(--border)] mb-4 px-2">
+            <button class="pb-3 text-xs font-semibold uppercase tracking-wide transition-colors relative text-[#1C1B1A]">
+              Risk Overview
+              <div class="absolute bottom-0 left-0 w-full h-0.5 bg-[#1C1B1A]"></div>
+            </button>
+            <button class="pb-3 text-xs font-semibold uppercase tracking-wide transition-colors relative text-gray-400 hover:text-gray-600">
+              Open Issues <span class="ml-1 px-1.5 py-0.5 bg-amber-100 text-amber-700 rounded-full text-[9px]">3</span>
+            </button>
+          </div>
+
+          <div class="flex-1 overflow-y-auto pr-1">
+            <div>
+              <div class="grid grid-cols-5 gap-3 mb-6">
+                <div class="flex flex-col p-3 border border-[var(--border)] rounded bg-white hover:shadow-sm transition-shadow">
+                  <div class="flex justify-between items-start mb-2">
+                    <span class="text-xs font-medium text-gray-500">Financial Stability</span>
+                    <span class="text-[10px] font-bold text-amber-600">Medium</span>
+                  </div>
+                  <div class="mb-2">
+                    <div class="text-lg font-semibold text-[#1C1B1A]">78<span class="text-xs text-gray-300 font-normal">/100</span></div>
+                  </div>
+                  <div class="w-full h-1.5 bg-gray-100 rounded-full overflow-hidden mb-2">
+                    <div class="h-full bg-amber-500" style="width: 78%;"></div>
+                  </div>
+                  <p class="text-[10px] leading-snug text-gray-400">Vendor cash flow stable; margins tightening.</p>
+                </div>
+                <div class="flex flex-col p-3 border border-[var(--border)] rounded bg-white hover:shadow-sm transition-shadow">
+                  <div class="flex justify-between items-start mb-2">
+                    <span class="text-xs font-medium text-gray-500">Operational Resilience</span>
+                    <span class="text-[10px] font-bold text-amber-600">Medium</span>
+                  </div>
+                  <div class="mb-2">
+                    <div class="text-lg font-semibold text-[#1C1B1A]">74<span class="text-xs text-gray-300 font-normal">/100</span></div>
+                  </div>
+                  <div class="w-full h-1.5 bg-gray-100 rounded-full overflow-hidden mb-2">
+                    <div class="h-full bg-amber-500" style="width: 74%;"></div>
+                  </div>
+                  <p class="text-[10px] leading-snug text-gray-400">SLA volatility tied to seasonal spikes.</p>
+                </div>
+                <div class="flex flex-col p-3 border border-[var(--border)] rounded bg-white hover:shadow-sm transition-shadow">
+                  <div class="flex justify-between items-start mb-2">
+                    <span class="text-xs font-medium text-gray-500">Cyber Security</span>
+                    <span class="text-[10px] font-bold text-emerald-600">Low</span>
+                  </div>
+                  <div class="mb-2">
+                    <div class="text-lg font-semibold text-[#1C1B1A]">88<span class="text-xs text-gray-300 font-normal">/100</span></div>
+                  </div>
+                  <div class="w-full h-1.5 bg-gray-100 rounded-full overflow-hidden mb-2">
+                    <div class="h-full bg-emerald-500" style="width: 88%;"></div>
+                  </div>
+                  <p class="text-[10px] leading-snug text-gray-400">SOC2 controls maintained; pen test current.</p>
+                </div>
+                <div class="flex flex-col p-3 border border-[var(--border)] rounded bg-white hover:shadow-sm transition-shadow">
+                  <div class="flex justify-between items-start mb-2">
+                    <span class="text-xs font-medium text-gray-500">Compliance & Legal</span>
+                    <span class="text-[10px] font-bold text-emerald-600">Very Low</span>
+                  </div>
+                  <div class="mb-2">
+                    <div class="text-lg font-semibold text-[#1C1B1A]">92<span class="text-xs text-gray-300 font-normal">/100</span></div>
+                  </div>
+                  <div class="w-full h-1.5 bg-gray-100 rounded-full overflow-hidden mb-2">
+                    <div class="h-full bg-emerald-500" style="width: 92%;"></div>
+                  </div>
+                  <p class="text-[10px] leading-snug text-gray-400">Contract compliance verified.</p>
+                </div>
+                <div class="flex flex-col p-3 border border-[var(--border)] rounded bg-white hover:shadow-sm transition-shadow">
+                  <div class="flex justify-between items-start mb-2">
+                    <span class="text-xs font-medium text-gray-500">Reputational</span>
+                    <span class="text-[10px] font-bold text-amber-600">Medium</span>
+                  </div>
+                  <div class="mb-2">
+                    <div class="text-lg font-semibold text-[#1C1B1A]">69<span class="text-xs text-gray-300 font-normal">/100</span></div>
+                  </div>
+                  <div class="w-full h-1.5 bg-gray-100 rounded-full overflow-hidden mb-2">
+                    <div class="h-full bg-amber-500" style="width: 69%;"></div>
+                  </div>
+                  <p class="text-[10px] leading-snug text-gray-400">Vendor community sentiment mixed in NWA.</p>
+                </div>
+              </div>
+
+              <h3 class="text-sm font-semibold text-[#1C1B1A] mb-3 flex items-center gap-2">
+                <span>Critical Findings</span>
+                <div class="h-px flex-1 bg-gray-100"></div>
+              </h3>
+
+              <div class="space-y-3">
+                <div class="p-3 rounded border border-red-100 bg-red-50/30 flex items-start gap-3">
+                  <div class="text-red-500 mt-0.5">!</div>
+                  <div class="flex-1">
+                    <div class="flex justify-between items-center mb-1">
+                      <span class="text-sm font-medium text-red-900">Top 3 vendor accounts at 48% of revenue</span>
+                      <span class="text-[10px] bg-white px-2 py-0.5 rounded border border-red-100 text-red-700 font-mono">Vendor Community</span>
+                    </div>
+                    <p class="text-xs text-red-700/80 mb-2">Recommend diversification sprint and updated concentration thresholds.</p>
+                    <div class="flex items-center gap-4 text-[10px] text-red-600/70 uppercase font-bold tracking-wide">
+                      <span>Status: In Progress</span>
+                      <span>Owner: Risk Team</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="mt-4 pt-3 border-t border-[var(--border)] flex justify-between items-center text-xs text-gray-500">
+            <div class="flex gap-4">
+              <span>Assessment ID: AS-2026-104</span>
+              <span>Created by: Vendor Risk Engine</span>
+            </div>
+            <div class="flex gap-2">
+              <button class="px-3 py-1.5 rounded border border-[var(--border)] bg-white hover:bg-[#FAFAFA] font-medium text-[#1C1B1A] transition-colors">Request Info</button>
+              <button class="px-3 py-1.5 rounded bg-[#1C1B1A] text-white hover:bg-gray-800 font-medium shadow-sm transition-colors">Approve Assessment</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
